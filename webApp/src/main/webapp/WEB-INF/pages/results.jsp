@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Simple Login Application Using Spring MVC</title>
+<title>cb Web App</title>
 </head>
 <body>
 	<h1><%= request.getAttribute("message") %></h1>

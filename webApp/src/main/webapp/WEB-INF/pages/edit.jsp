@@ -6,35 +6,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Being Java Guys | Edit User Details</title>
+<title>cb Web App | Edit User Details</title>
 </head>
 <body>
 	<center>
 
-		<div style="color: teal; font-size: 30px">Being Java Guys |
+		<div style="color: teal; font-size: 30px">cb Web App |
 			Edit Details</div>
 
 
 
 		<c:url var="userRegistration" value="saveUser.html" />
-		<form:form id="registerForm" modelAttribute="employee" method="post"
+		<form:form id="registerForm" modelAttribute="user" method="post"
 			action="update">
 			<table width="400px" height="150px">
 				<tr>
 					<td><form:label path="firstName">First Name</form:label></td>
-					<td><form:input path="firstName" value="${employeeObject.firstName}" /></td>
+					<td><form:input path="firstName" value="${userObject.firstName}" /></td>
 				</tr>
 				<tr>
 					<td><form:label path="lastName">Last Name</form:label></td>
-					<td><form:input path="lastName" value="${employeeObject.lastName}"/></td>
+					<td><form:input path="lastName" value="${userObject.lastName}"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="email">Email</form:label></td>
-					<td><form:input path="email" value="${employeeObject.email}"/></td>
+					<td><form:input path="email" value="${userObject.email}"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="phone">Phone</form:label></td>
-					<td><form:input path="phone" value="${employeeObject.phone}"/></td>
+					<td><form:input path="phone" value="${userObject.phone}"/></td>
 				</tr>
 				<tr>
 					<td></td>

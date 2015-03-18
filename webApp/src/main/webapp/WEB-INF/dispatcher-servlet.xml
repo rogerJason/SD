@@ -32,7 +32,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">  
             <list>  
-                <value>com.mycompany.domain.User</value>  
+                <value>com.mycompany.domain.Employee</value>  
             </list>  
         </property> 
         <property name="hibernateProperties">

@@ -10,6 +10,6 @@
     <title></title>  
 </head>  
 <body>  
-<h1>Welcome SpingMVC4 Home Page!</h1>  
+<h1>Welcome! cb Web App Home Page</h1>  
 </body>  
 </html>
