@@ -29,7 +29,7 @@ public class AuthenticateService {
 		boolean userStatus = false;
 		try {
 			@SuppressWarnings("unchecked")
-			List<User> userObjs = hibernateTemplate.find("from User u where u.userName=? and u.password=?",new Object[]{username,password});
+			List<?> userObjs = hibernateTemplate.find("from User u where u.username=? and u.password=?",new Object[]{username,password});
 			if(userObjs.size() != 0) {
 				//System.out.println("User ID : " + userObjs.get(0).getUserId() + ", User name : " + userObjs.get(0).getUserName() + ", Password : " + userObjs.get(0).getPassword());
 				userStatus = true;
