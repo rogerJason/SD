@@ -20,8 +20,9 @@
 		<form:form id="registerForm" modelAttribute="user" method="post"
 			action="update">
 			<table width="400px" height="150px">
+                            <form:hidden path="id" value="${userObject.id}" />
 				<tr>
-					<td><form:label path="firstName">First Name</form:label></td>
+					<td><form:label path="firstName">First Name</form:label></td>                                      
 					<td><form:input path="firstName" value="${userObject.firstName}" /></td>
 				</tr>
 				<tr>

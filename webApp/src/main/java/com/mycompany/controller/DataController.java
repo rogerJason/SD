@@ -44,7 +44,7 @@ public class DataController {
 	@RequestMapping("edit")
 	public ModelAndView editUser(@RequestParam int id,@ModelAttribute User user) {
 		User userObject = dataService.getRowById(id);
-		return new ModelAndView("edit","userObject",userObject);
+		return new ModelAndView("edit", "userObject", userObject);
 	}
 	
 	@RequestMapping("update")

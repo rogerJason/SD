@@ -10,12 +10,12 @@
 </head>
 <body>
 	<center>
-
+	
 		<div style="color: teal; font-size: 30px">cb Web App |
 			Registration Form</div>
 
-
-
+			
+			
 		<c:url var="userRegistration" value="saveUser.html" />
 		<form:form id="registerForm" modelAttribute="user" method="post"
 			action="register">
