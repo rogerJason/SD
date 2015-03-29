@@ -12,6 +12,7 @@
 		<spring.version>4.0.5.RELEASE</spring.version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
 		<log4j.version>1.2.17</log4j.version>
+                <spring.security.version>3.2.5.RELEASE</spring.security.version>
 		<jdk.version>1.8</jdk.version>
 		<context.path>webApp</context.path>
 	</properties>
@@ -31,6 +32,7 @@
 		</plugins>
 	</build>
 	<dependencies>
+                <!-- log4j -->  
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -54,6 +56,7 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+                <!-- hibernate --> 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -66,17 +69,39 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+                <!-- jstl -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+                
+                <!-- mysql driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
 
+                <!-- Spring Security -->
+                <dependency>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-web</artifactId>
+                        <version>${spring.security.version}</version>
+                </dependency>
+                
+                <dependency>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-config</artifactId>
+                        <version>${spring.security.version}</version>
+                </dependency>
+
+                <!-- Spring Security JSP Taglib -->
+                <dependency>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-taglibs</artifactId>
+                        <version>${spring.security.version}</version>
+                </dependency>
 
 	</dependencies>
 </project>
