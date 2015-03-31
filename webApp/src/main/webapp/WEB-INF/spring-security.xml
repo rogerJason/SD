@@ -20,9 +20,10 @@
 		<csrf />
 	</http>
 
-	<authentication-manager>
-                <password-encoder ref="encoder" />
-		<authentication-provider user-service-ref="loginService" />               
+	<authentication-manager>    
+            <authentication-provider user-service-ref="loginService">  
+            <password-encoder ref="encoder" />   
+            </authentication-provider>                  
 	</authentication-manager>
         
         <beans:bean id="encoder"
