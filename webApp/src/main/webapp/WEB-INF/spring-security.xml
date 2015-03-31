@@ -24,7 +24,7 @@
             <authentication-provider user-service-ref="loginService">  
             <password-encoder ref="encoder" />   
             </authentication-provider>                  
-	</authentication-manager>
+	</authentication-manager> 
         
         <beans:bean id="encoder"
             class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
