@@ -25,7 +25,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">  
             <list>  
-                <value>com.mycompany.domain.User</value> 
+                <value>com.mycompany.domain.Client</value> 
 		<value>com.mycompany.domain.login.Users</value>
 		<value>com.mycompany.domain.login.UserRole</value>				
             </list>  

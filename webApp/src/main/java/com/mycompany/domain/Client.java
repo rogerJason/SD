@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class User {
+public class Client {
 
 	@Id
 	@GeneratedValue
@@ -21,6 +21,11 @@ public class User {
 	
 	private String email;
 	private String phone;
+        private String address;
+        private String PNC; // personal numeric code
+        
+        @Column(name="id_card_nr")
+        private String idCardNr;
 
 	public int getId() {
 		return id;
@@ -60,6 +65,30 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+        
+        public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+        
+        public String getPNC() {
+		return PNC;
+	}
+
+	public void setPNC(String PNC) {
+		this.PNC = PNC;
+	}
+        
+        public String getIdCardNr() {
+		return idCardNr;
+	}
+
+	public void setIdCardNr(String idCardNr) {
+		this.idCardNr = idCardNr;
 	}
 
 }

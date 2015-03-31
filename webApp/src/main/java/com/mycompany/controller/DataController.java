@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mycompany.domain.User;
+import com.mycompany.domain.Client;
 import com.mycompany.services.DataService;
 
 @Controller
@@ -18,39 +18,39 @@ public class DataController {
 	@Autowired
 	DataService dataService;
 
-	@RequestMapping("form")
-	public ModelAndView getForm(@ModelAttribute User user) {
-		return new ModelAndView("form");
+	@RequestMapping("user_form")
+	public ModelAndView getForm(@ModelAttribute Client client) {
+		return new ModelAndView("user_form");
 	}
 	
-	@RequestMapping("register")
-	public ModelAndView registerUser(@ModelAttribute User user) {
-		dataService.insertRow(user);
-		return new ModelAndView("redirect:list");
+	@RequestMapping("user_register")
+	public ModelAndView registerUser(@ModelAttribute Client client) {
+		dataService.insertRow(client);
+		return new ModelAndView("redirect:user_list");
 	}
 	
-	@RequestMapping("list")
+	@RequestMapping("user_list")
 	public ModelAndView getList() {
-		List userList = dataService.getList();
-		return new ModelAndView("list","userList",userList);
+		List clientList = dataService.getList();
+		return new ModelAndView("user_list","clientList",clientList);
 	}
 	
-	@RequestMapping("delete")
-	public ModelAndView deleteUser(@RequestParam int id) {
+	@RequestMapping("user_delete")
+	public ModelAndView deleteClient(@RequestParam int id) {
 		dataService.deleteRow(id);
-		return new ModelAndView("redirect:list");
+		return new ModelAndView("redirect:user_list");
 	}
 	
-	@RequestMapping("edit")
-	public ModelAndView editUser(@RequestParam int id,@ModelAttribute User user) {
-		User userObject = dataService.getRowById(id);
-		return new ModelAndView("edit", "userObject", userObject);
+	@RequestMapping("user_edit")
+	public ModelAndView editClient(@RequestParam int id,@ModelAttribute Client client) {
+		Client clientObject = dataService.getRowById(id);
+		return new ModelAndView("user_edit", "clientObject", clientObject);
 	}
 	
-	@RequestMapping("update")
-	public ModelAndView updateUser(@ModelAttribute User user) {
-		dataService.updateRow(user);
-		return new ModelAndView("redirect:list");
+	@RequestMapping("user_update")
+	public ModelAndView updateClient(@ModelAttribute Client client) {
+		dataService.updateRow(client);
+		return new ModelAndView("redirect:user_list");
 	}
 
 }

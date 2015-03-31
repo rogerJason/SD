@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>User Profile Page | cb Web App</title>
+<title>User Profile Page | CB Bank</title>
 </head>
 <body>
 	<center>

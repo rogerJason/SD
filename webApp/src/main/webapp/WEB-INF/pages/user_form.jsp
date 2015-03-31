@@ -6,19 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>cb Web App | Registration Form</title>
+<title>CB Bank | Registration Form</title>
 </head>
 <body>
-	<center>
-	
-		<div style="color: teal; font-size: 30px">cb Web App |
-			Registration Form</div>
-
-			
-			
-		<c:url var="userRegistration" value="saveUser.html" />
-		<form:form id="registerForm" modelAttribute="user" method="post"
-			action="register">
+	<center>	
+		<div style="color: teal; font-size: 30px">CB Bank | Registration Form</div>
+		
+		<c:url var="clientRegistration" value="saveClient.html" />
+		<form:form id="registerForm" modelAttribute="client" method="post"
+			action="user_register">
 			<table width="400px" height="150px">
 				<tr>
 					<td><form:label path="firstName">First Name</form:label></td>
@@ -36,6 +32,18 @@
 					<td><form:label path="phone">Phone</form:label></td>
 					<td><form:input path="phone" /></td>
 				</tr>
+                                <tr>
+					<td><form:label path="address">Address</form:label></td>
+					<td><form:input path="address" /></td>
+				</tr>
+                                <tr>
+					<td><form:label path="PNC">PNC</form:label></td>
+					<td><form:input path="PNC" /></td>
+				</tr>
+                                <tr>
+					<td><form:label path="idCardNr">Id Card Nr</form:label></td>
+					<td><form:input path="idCardNr" /></td>
+				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="Register" />
@@ -45,7 +53,7 @@
 		</form:form>
 
 
-		<a href="list">Click Here to see User List</a>
+		<a href="user_list">Click Here to see Client List</a>
 	</center>
 </body>
 </html>

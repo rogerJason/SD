@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mycompany.dao.DataDao;
-import com.mycompany.domain.User;
+import com.mycompany.domain.Client;
 
 public class DataServiceImpl implements DataService {
 	
@@ -13,22 +13,22 @@ public class DataServiceImpl implements DataService {
 	DataDao dataDao;
 
 	@Override
-	public int insertRow(User user) {
+	public int insertRow(Client user) {
 		return dataDao.insertRow(user);
 	}
 
 	@Override
-	public List<User> getList() {
+	public List<Client> getList() {
 		return dataDao.getList();
 	}
 
 	@Override
-	public User getRowById(int id) {
+	public Client getRowById(int id) {
 		return dataDao.getRowById(id);
 	}
 
 	@Override
-	public int updateRow(User user) {
+	public int updateRow(Client user) {
 		return dataDao.updateRow(user);
 	}
 

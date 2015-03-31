@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mycompany.domain.User;
+import com.mycompany.domain.Client;
 
 public class DataDaoImpl implements DataDao {
 
@@ -19,7 +19,7 @@ public class DataDaoImpl implements DataDao {
 
 	@Override
 	@Transactional
-	public int insertRow(User user) {
+	public int insertRow(Client user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(user);
@@ -30,24 +30,24 @@ public class DataDaoImpl implements DataDao {
 	}
 
 	@Override
-	public List<User> getList() {
+	public List<Client> getList() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<User> userList = session.createQuery("from User")
+		List<Client> userList = session.createQuery("from Client")
 				.list();
 		session.close();
 		return userList;
 	}
 
 	@Override
-	public User getRowById(int id) {
+	public Client getRowById(int id) {
 		Session session = sessionFactory.openSession();
-		User user = (User) session.load(User.class, id);
+		Client user = (Client) session.load(Client.class, id);
 		return user;
 	}
 
 	@Override
-	public int updateRow(User user) {
+	public int updateRow(Client user) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(user);
@@ -61,7 +61,7 @@ public class DataDaoImpl implements DataDao {
 	public int deleteRow(int id) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		User user = (User) session.load(User.class, id);
+		Client user = (Client) session.load(Client.class, id);
 		session.delete(user);
 		tx.commit();
 		Serializable ids = session.getIdentifier(user);

@@ -2,16 +2,16 @@ package com.mycompany.dao;
 
 import java.util.List;
 
-import com.mycompany.domain.User;
+import com.mycompany.domain.Client;
 
 public interface DataDao {
-	public int insertRow(User user);
+	public int insertRow(Client user);
 
-	public List<User> getList();
+	public List<Client> getList();
 
-	public User getRowById(int id);
+	public Client getRowById(int id);
 
-	public int updateRow(User user);
+	public int updateRow(Client user);
 
 	public int deleteRow(int id);
 
