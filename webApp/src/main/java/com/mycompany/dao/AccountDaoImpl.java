@@ -12,63 +12,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.mycompany.domain.Client;
+import com.mycompany.domain.Account;
 
 @Configuration
 @ComponentScan("com.mycompany.dao") // No need to include component-scan in xml
-public class DataDaoImpl implements DataDao {
+public class AccountDaoImpl implements AccountDao{
 
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@Override
 	@Transactional
-	public int insertRow(Client user) {
+        @Override
+	public int insertRow(Account account) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(user);
+		session.saveOrUpdate(account);
 		tx.commit();
-		Serializable id = session.getIdentifier(user);
+		Serializable id = session.getIdentifier(account);
 		session.close();
 		return (Integer) id;
 	}
 
-	@Override
-	public List<Client> getList() {
+        @Override
+	public List<Account> getList() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<Client> userList = session.createQuery("from Client")
-				.list();
+		List<Account> accountList = session.createQuery("from Account").list();
 		session.close();
-		return userList;
+		return accountList;
 	}
 
-	@Override
-	public Client getRowById(int id) {
+        @Override
+	public Account getRowById(int id) {
 		Session session = sessionFactory.openSession();
-		Client user = (Client) session.load(Client.class, id);
-		return user;
+		Account account = (Account) session.load(Account.class, id);
+		return account;
 	}
 
-	@Override
-	public int updateRow(Client user) {
+        @Override
+	public int updateRow(Account account) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(user);
+		session.saveOrUpdate(account);
 		tx.commit();
-		Serializable id = session.getIdentifier(user);
+		Serializable id = session.getIdentifier(account);
 		session.close();
 		return (Integer) id;
 	}
 
-	@Override
+        @Override
 	public int deleteRow(int id) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
-		Client user = (Client) session.load(Client.class, id);
-		session.delete(user);
+		Account account = (Account) session.load(Account.class, id);
+		session.delete(account);
 		tx.commit();
-		Serializable ids = session.getIdentifier(user);
+		Serializable ids = session.getIdentifier(account);
 		session.close();
 		return (Integer) ids;
 	}

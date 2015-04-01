@@ -6,7 +6,7 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>CB Bank | Clients</title>
+        <title>CB Bank | Account</title>
         <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
     </head>
 
@@ -34,55 +34,50 @@
                         <!-- end #menu -->
                         <div id="content">
                             <div class="post">
-                                <h2 class="title"><a href="login"><center>Clients</center></a></h2>
+                                <h2 class="title"><a href="login"><center>Accounts</center></a></h2>
                                 <div class="entry">
                                     <center>
-                                        <div style="color: darkorange; font-size: 30px">CB Bank | Client Details</div>
+                                        <div style="color: darkorange; font-size: 30px">CB Bank | Account Details</div>
                                             <br />
-		<c:if test="${!empty clientList}">
+		<c:if test="${!empty accountList}">
 			<table border="1" bgcolor="black" width="600px">
 				<tr
 					style="background-color: orange; color: white; text-align: center;"
 					height="40px">
 					
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Email</td>
-					<td>Phone</td>
-                                        <td>Address</td>
-                                        <td>PNC</td>
-                                        <td>Id Card Nr</td>
-					<td>Edit</td>
+					<td>Type</td>
+					<td>Balance</td>
+					<td>Interest Rate</td>
+					<td>Overdraft</td>
+                                        <td>Last Access</td>
+                                        <td>Edit</td>
 					<td>Delete</td>
 				</tr>
-				<c:forEach items="${clientList}" var="client">
+				<c:forEach items="${accountList}" var="account">
 					<tr
 						style="background-color: white; color: black; text-align: center;"
 						height="30px">
 						
-						<td><c:out value="${client.firstName}" />
+						<td><c:out value="${account.type}" />
 						</td>
-						<td><c:out value="${client.lastName}" />
+						<td><c:out value="${account.balance}" />
 						</td>
-						<td><c:out value="${client.email}" />
+						<td><c:out value="${account.interestRate}" />
 						</td>
-						<td><c:out value="${client.phone}" />
+						<td><c:out value="${account.overdraft}" />
 						</td>
-                                                <td><c:out value="${client.address}" />
+                                                <td><c:out value="${account.lastAccess}" />
 						</td>
-                                                <td><c:out value="${client.PNC}" />
-						</td>
-                                                <td><c:out value="${client.idCardNr}" />
-						</td>
-						<td><a href="user_edit?id=${client.id}">Edit</a></td>
-						<td><a href="user_delete?id=${client.id}">Delete</a></td>
+                                                
+						<td><a href="account_edit?id=${account.id}">Edit</a></td>
+						<td><a href="account_delete?id=${account.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</c:if>
 
                                             <br />
-		<a href="user_form">Click Here to add new Client</a>
+		<a href="account_form">Click Here to add new Account</a>
                                     </center>
                                 </div>                              
                             </div>

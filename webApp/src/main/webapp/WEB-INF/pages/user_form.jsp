@@ -27,7 +27,7 @@
                                 <li class="current_page_item"><a href="home">Home</a></li>
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
-                                <li><a href="#">About</a></li>
+                                <li><a href="account_list">Accounts</a></li>
                                 <li><a href="#">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
@@ -38,7 +38,7 @@
                                 <h2 class="title"><a href="login"><center>Register Client</center></a></h2>
                                 <div class="entry">
                                     <center>
-                                        <div style="color: teal; font-size: 30px">CB Bank | Registration Form</div>
+                                        <div style="color: darkorange; font-size: 30px">CB Bank | Registration Form</div>
                                         <br />
                                         <c:url var="clientRegistration" value="saveClient.html" />
                                         <form:form id="registerForm" modelAttribute="client" method="post"

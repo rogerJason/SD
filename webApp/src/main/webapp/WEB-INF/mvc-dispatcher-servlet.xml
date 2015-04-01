@@ -26,6 +26,7 @@
 		<property name="annotatedClasses">  
             <list>  
                 <value>com.mycompany.domain.Client</value> 
+                <value>com.mycompany.domain.Account</value> 
 		<value>com.mycompany.domain.login.Users</value>
 		<value>com.mycompany.domain.login.UserRole</value>				
             </list>  

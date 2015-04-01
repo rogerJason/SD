@@ -7,7 +7,7 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>CB Bank | Edit Client</title>
+        <title>CB Bank | Edit Account</title>
         <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
     </head>
 
@@ -35,44 +35,37 @@
                         <!-- end #menu -->
                         <div id="content">
                             <div class="post">
-                                <h2 class="title"><a href="login"><center>Edit Client</center></a></h2>
+                                <h2 class="title"><a href="login"><center>Edit Account</center></a></h2>
                                 <div class="entry">
                                     <center>
                                         <div style="color: darkorange; font-size: 30px">CB Bank | Edit Details</div>
                                         <br />
-                                        <c:url var="clientRegistration" value="saveClient.html" />
-                                        <form:form id="registerForm" modelAttribute="client" method="post"
-                                                   action="user_update">
+                                        <c:url var="accountRegistration" value="saveAccount.html" />
+                                        <form:form id="registerForm" modelAttribute="account" method="post"
+                                                   action="account_update">
                                             <table width="400px" height="150px">
-                                                <form:hidden path="id" value="${clientObject.id}" />
+                                                <form:hidden path="id" value="${accountObject.id}" />
                                                 <tr>
-                                                    <td><form:label path="firstName">First Name</form:label></td>                                      
-                                                    <td><form:input path="firstName" value="${clientObject.firstName}" /></td>
+                                                    <td><form:label path="type">Type</form:label></td>                                      
+                                                    <td><form:input path="type" value="${accountObject.type}" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><form:label path="lastName">Last Name</form:label></td>
-                                                    <td><form:input path="lastName" value="${clientObject.lastName}"/></td>
+                                                    <td><form:label path="balance">Balance</form:label></td>
+                                                    <td><form:input path="balance" value="${accountObject.balance}"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><form:label path="email">Email</form:label></td>
-                                                    <td><form:input path="email" value="${clientObject.email}"/></td>
+                                                    <td><form:label path="interestRate">Interest Rate</form:label></td>
+                                                    <td><form:input path="interestRate" value="${accountObject.interestRate}"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><form:label path="phone">Phone</form:label></td>
-                                                    <td><form:input path="phone" value="${clientObject.phone}"/></td>
+                                                    <td><form:label path="overdraft">Overdraft</form:label></td>
+                                                    <td><form:input path="overdraft" value="${accountObject.overdraft}"/></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><form:label path="address">Address</form:label></td>
-                                                    <td><form:input path="address" value="${clientObject.address}"/></td>
+                                                    <td><form:label path="lastAccess">Last Access</form:label></td>
+                                                    <td><form:input path="lastAccess" value="${accountObject.lastAccess}"/></td>
                                                 </tr>
-                                                <tr>
-                                                    <td><form:label path="PNC">PNC</form:label></td>
-                                                    <td><form:input path="PNC" value="${clientObject.PNC}"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form:label path="idCardNr">Id Card Nr</form:label></td>
-                                                    <td><form:input path="idCardNr" value="${clientObject.idCardNr}"/></td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td></td>                                                   
                                                     <td><br /><input type="submit" value="Update" />

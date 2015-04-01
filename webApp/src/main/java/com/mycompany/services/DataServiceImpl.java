@@ -3,10 +3,14 @@ package com.mycompany.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import com.mycompany.dao.DataDao;
 import com.mycompany.domain.Client;
 
+@Configuration
+@ComponentScan("com.mycompany.services") // No need to include component-scan in xml
 public class DataServiceImpl implements DataService {
 	
 	@Autowired

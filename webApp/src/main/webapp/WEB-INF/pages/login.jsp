@@ -26,7 +26,7 @@
                                 <li class="current_page_item"><a href="home">Home</a></li>
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
-                                <li><a href="#">About</a></li>
+                                <li><a href="account_list">Accounts</a></li>
                                 <li><a href="#">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
