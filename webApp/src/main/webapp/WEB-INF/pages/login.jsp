@@ -2,8 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>Login | CB Bank</title>
+    <link rel="stylesheet" type="text/css" href="default.css">
+    <title>Login | CB Bank</title>
 </head>
+
 <body>
 	<center>
 		<br /> <br /> <br />
