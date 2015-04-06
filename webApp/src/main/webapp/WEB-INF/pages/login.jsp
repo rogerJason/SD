@@ -1,11 +1,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
-        <meta name="keywords" content="" />
-        <meta name="description" content="" />
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CB Bank | Login</title>
         <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
     </head>
@@ -26,7 +26,7 @@
                                 <li class="current_page_item"><a href="home">Home</a></li>
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
-                                <li><a href="account_list">Accounts</a></li>
+                                <li><a href="user_account_list">Accounts</a></li>
                                 <li><a href="#">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>

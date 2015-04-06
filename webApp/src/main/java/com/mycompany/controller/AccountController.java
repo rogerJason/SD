@@ -18,39 +18,39 @@ public class AccountController {
 	@Autowired
 	AccountService accountService;
 
-	@RequestMapping("account_form")
+	@RequestMapping("user_account_form")
 	public ModelAndView getForm(@ModelAttribute Account account) {
-		return new ModelAndView("account_form");
+		return new ModelAndView("user_account_form");
 	}
 	
-	@RequestMapping("account_register")
+	@RequestMapping("user_account_register")
 	public ModelAndView registerAccount(@ModelAttribute Account account) {
 		accountService.insertRow(account);
-		return new ModelAndView("redirect:account_list");
+		return new ModelAndView("redirect:user_account_list");
 	}
 	
-	@RequestMapping("account_list")
+	@RequestMapping("user_account_list")
 	public ModelAndView getList() {
 		List accountList = accountService.getList();
-		return new ModelAndView("account_list","accountList",accountList);
+		return new ModelAndView("user_account_list","accountList",accountList);
 	}
 	
-	@RequestMapping("account_delete")
+	@RequestMapping("user_account_delete")
 	public ModelAndView deleteAccount(@RequestParam int id) {
 		accountService.deleteRow(id);
-		return new ModelAndView("redirect:account_list");
+		return new ModelAndView("redirect:user_account_list");
 	}
 	
-	@RequestMapping("account_edit")
+	@RequestMapping("user_account_edit")
 	public ModelAndView editAccount(@RequestParam int id,@ModelAttribute Account account) {
 		Account accountObject = accountService.getRowById(id);
-		return new ModelAndView("account_edit", "accountObject", accountObject);
+		return new ModelAndView("user_account_edit", "accountObject", accountObject);
 	}
 	
-	@RequestMapping("account_update")
+	@RequestMapping("user_account_update")
 	public ModelAndView updateAccount(@ModelAttribute Account account) {
 		accountService.updateRow(account);
-		return new ModelAndView("redirect:account_list");
+		return new ModelAndView("redirect:user_account_list");
 	}
 
 }

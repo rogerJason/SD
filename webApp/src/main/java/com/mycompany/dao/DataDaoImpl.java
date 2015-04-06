@@ -18,59 +18,59 @@ import com.mycompany.domain.Client;
 @ComponentScan("com.mycompany.dao") // No need to include component-scan in xml
 public class DataDaoImpl implements DataDao {
 
-	@Autowired
-	SessionFactory sessionFactory;
+    @Autowired
+    SessionFactory sessionFactory;
 
-	@Override
-	@Transactional
-	public int insertRow(Client user) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(user);
-		tx.commit();
-		Serializable id = session.getIdentifier(user);
-		session.close();
-		return (Integer) id;
-	}
+    @Override
+    @Transactional
+    public int insertRow(Client user) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.saveOrUpdate(user);
+        tx.commit();
+        Serializable id = session.getIdentifier(user);
+        session.close();
+        return (Integer) id;
+    }
 
-	@Override
-	public List<Client> getList() {
-		Session session = sessionFactory.openSession();
-		@SuppressWarnings("unchecked")
-		List<Client> userList = session.createQuery("from Client")
-				.list();
-		session.close();
-		return userList;
-	}
+    @Override
+    public List<Client> getList() {
+        Session session = sessionFactory.openSession();
+        @SuppressWarnings("unchecked")
+        List<Client> userList = session.createQuery("from Client")
+                .list();
+        session.close();
+        return userList;
+    }
 
-	@Override
-	public Client getRowById(int id) {
-		Session session = sessionFactory.openSession();
-		Client user = (Client) session.load(Client.class, id);
-		return user;
-	}
+    @Override
+    public Client getRowById(int id) {
+        Session session = sessionFactory.openSession();
+        Client user = (Client) session.load(Client.class, id);
+        return user;
+    }
 
-	@Override
-	public int updateRow(Client user) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(user);
-		tx.commit();
-		Serializable id = session.getIdentifier(user);
-		session.close();
-		return (Integer) id;
-	}
+    @Override
+    public int updateRow(Client user) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.saveOrUpdate(user);
+        tx.commit();
+        Serializable id = session.getIdentifier(user);
+        session.close();
+        return (Integer) id;
+    }
 
-	@Override
-	public int deleteRow(int id) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		Client user = (Client) session.load(Client.class, id);
-		session.delete(user);
-		tx.commit();
-		Serializable ids = session.getIdentifier(user);
-		session.close();
-		return (Integer) ids;
-	}
+    @Override
+    public int deleteRow(int id) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        Client user = (Client) session.load(Client.class, id);
+        session.delete(user);
+        tx.commit();
+        Serializable ids = session.getIdentifier(user);
+        session.close();
+        return (Integer) ids;
+    }
 
 }
