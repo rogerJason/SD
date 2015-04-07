@@ -15,6 +15,25 @@
                 <div id="logo">
                     <h1><a href="home">CB Bank</a></h1>
                 </div>
+
+                <div id="search">
+                    <c:url var="logoutUrl" value="j_spring_security_logout" />
+                    <form method="post" action="${logoutUrl}">
+                        <fieldset>
+                            <p id="search-text">
+                                Logged In: 
+                                <sec:authorize access="isAuthenticated()"> 
+                                    <sec:authentication property="principal.username" />
+                                </sec:authorize>
+                            </p>
+                            <p align="right">
+                                <input type="submit" id="search-submit" value="Log Out" />  
+                            </p>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </fieldset>
+                    </form>
+                </div>
+
             </div>
             <!-- end #header -->
             <div id="page">
@@ -49,6 +68,13 @@
                                 <li>
                                     <h2>Our Motto:</h2>
                                     <p>"Invest with confidence"</p>
+                                </li>
+                                <li>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                        This session will be visible to an admin only.<br/>
+                                        You are an Administrator.<br/>
+                                        Click <a href="admin">Here</a> to perform operations on Employees!<br/>
+                                    </sec:authorize>
                                 </li>
                                 <li>
                                     <h2>Categories</h2>

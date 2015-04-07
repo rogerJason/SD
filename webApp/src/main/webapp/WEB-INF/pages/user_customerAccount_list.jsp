@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,23 @@
             <div id="header">
                 <div id="logo">
                     <h1><a href="home">CB Bank</a></h1>
+                </div>
+                <div id="search">
+                    <c:url var="logoutUrl" value="j_spring_security_logout" />
+                    <form method="post" action="${logoutUrl}">
+                        <fieldset>
+                            <p id="search-text">
+                                Logged In: 
+                            <sec:authorize access="isAuthenticated()"> 
+                                <sec:authentication property="principal.username" />
+                            </sec:authorize>
+                            </p>
+                            <p align="right">
+                                <input type="submit" id="search-submit" value="Log Out" />  
+                            </p>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </fieldset>
+                    </form>
                 </div>
             </div>
             <!-- end #header -->
@@ -38,7 +56,7 @@
                                         <div style="color: darkorange; font-size: 30px">CB Bank | Customer-Account Details</div>
                                         <br />
                                         <c:if test="${!empty customerAccountList}">
-                                            <table border="1" bgcolor="black" width="600px">
+                                            <table border="1" bgcolor="black" width="700px">
                                                 <tr
                                                     style="background-color: orange; color: white; text-align: center;"
                                                     height="40px">
@@ -46,6 +64,7 @@
                                                     <td>Id Customer</td>
                                                     <td>Full Name</td>
                                                     <td>Id Account</td>
+                                                    <td>IBAN</td>
                                                     <td>Creation</td>
                                                     <td>Edit</td>
                                                     <td>Delete</td>
@@ -60,6 +79,8 @@
                                                         <td><c:out value="${customerAccount[1].firstName} ${customerAccount[1].lastName}" />
                                                         </td>
                                                         <td><c:out value="${customerAccount[0].idAccount}" />
+                                                        </td>
+                                                        <td><c:out value="${customerAccount[2].IBAN}" />
                                                         </td>
                                                         <td><c:out value="${customerAccount[0].creation}" />
                                                         </td>

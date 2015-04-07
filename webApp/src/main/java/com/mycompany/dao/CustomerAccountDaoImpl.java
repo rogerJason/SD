@@ -41,10 +41,11 @@ public class CustomerAccountDaoImpl implements CustomerAccountDao{
 	public List<Object[]> getList() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		//List<CustomerAccount> customerAccountList = session.createQuery("from CustomerAccount").list();
-                
-                List<Object[]> joinedList = session.createQuery("from CustomerAccount ca JOIN ca.client c "
-                        + "WHERE ca.idCustomer = c.id").list();
+
+                //List<Object[]> joinedList = session.createQuery("from CustomerAccount ca JOIN ca.client c"
+                //        + "WHERE ca.idCustomer = c.id").list();
+                List<Object[]> joinedList = session.createQuery("from CustomerAccount ca JOIN ca.client c JOIN ca.account a"
+                        + " WHERE ca.idCustomer = c.id AND ca.idAccount = a.idAccount").list();
 		session.close();
                 
                 /*

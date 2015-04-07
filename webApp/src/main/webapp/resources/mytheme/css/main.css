@@ -141,12 +141,12 @@ img.aligncenter {
 	border: none;
 	background: url(../images/img09.jpg) no-repeat left top;
 	text-transform: lowercase;
-	font: normal 11px Arial, Helvetica, sans-serif;
+	font: normal 15px Arial, Helvetica, sans-serif;
 	color: #303030;
 }
 
 #search-submit {
-	display: none;
+	display: inline;
 }
 
 /* Menu */

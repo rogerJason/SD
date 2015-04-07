@@ -1,5 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,23 @@
             <div id="header">
                 <div id="logo">
                     <h1><a href="home">CB Bank</a></h1>
+                </div>
+                <div id="search">
+                    <c:url var="logoutUrl" value="j_spring_security_logout" />
+                    <form method="post" action="${logoutUrl}">
+                        <fieldset>
+                            <p id="search-text">
+                                Logged In: 
+                            <sec:authorize access="isAuthenticated()"> 
+                                <sec:authentication property="principal.username" />
+                            </sec:authorize>
+                            </p>
+                            <p align="right">
+                                <input type="submit" id="search-submit" value="Log Out" />  
+                            </p>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </fieldset>
+                    </form>
                 </div>
             </div>
             <!-- end #header -->
@@ -55,7 +73,7 @@
                                                     <td><form:label path="creation">Creation</form:label></td>
                                                     <td><form:input path="creation" value="${customerAccountObject.creation}"/></td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td></td>                                                   
                                                     <td><br /><input type="submit" value="Update" />
