@@ -1,5 +1,6 @@
 package com.mycompany.controller;
 
+import com.mycompany.domain.Client;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.CustomerAccount;
 import com.mycompany.services.CustomerAccountService;
+import java.util.ArrayList;
 
 @Controller
 public class CustomerAccountController {
@@ -31,7 +33,7 @@ public class CustomerAccountController {
 	
 	@RequestMapping("user_customerAccount_list")
 	public ModelAndView getList() {
-		List customerAccountList = customerAccountService.getList();
+		List<Object[]> customerAccountList = customerAccountService.getList();              
 		return new ModelAndView("user_customerAccount_list","customerAccountList",customerAccountList);
 	}
 	

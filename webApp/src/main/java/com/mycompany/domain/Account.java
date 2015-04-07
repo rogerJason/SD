@@ -19,6 +19,9 @@ public class Account {
     @GeneratedValue
     @Column(name = "idaccount")
     private int idAccount;
+    
+    @Column(name = "IBAN")
+    private String IBAN;
 
     @Column(name = "type")
     private String type;
@@ -44,6 +47,14 @@ public class Account {
 
     public void setId(int idAccount) {
         this.idAccount = idAccount;
+    }
+    
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
     }
 
     public String getType() {

@@ -25,7 +25,7 @@
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
                                 <li><a href="user_account_list">Accounts</a></li>
-                                <li><a href="#">Links</a></li>
+                                <li><a href="user_customerAccount_list">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
@@ -38,11 +38,12 @@
                                         <div style="color: darkorange; font-size: 30px">CB Bank | Account Details</div>
                                         <br />
                                         <c:if test="${!empty accountList}">
-                                            <table border="1" bgcolor="black" width="600px">
+                                            <table border="1" bgcolor="black" width="700px">
                                                 <tr
                                                     style="background-color: orange; color: white; text-align: center;"
                                                     height="40px">
 
+                                                    <td>IBAN</td>
                                                     <td>Type</td>
                                                     <td>Balance</td>
                                                     <td>Interest Rate</td>
@@ -56,6 +57,8 @@
                                                         style="background-color: white; color: black; text-align: center;"
                                                         height="30px">
 
+                                                        <td><c:out value="${account.IBAN}" />
+                                                        </td>
                                                         <td><c:out value="${account.type}" />
                                                         </td>
                                                         <td><c:out value="${account.balance}" />

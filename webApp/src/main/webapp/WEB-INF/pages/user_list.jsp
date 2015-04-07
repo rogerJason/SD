@@ -25,7 +25,7 @@
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
                                 <li><a href="user_account_list">Accounts</a></li>
-                                <li><a href="#">Links</a></li>
+                                <li><a href="user_customerAccount_list">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>

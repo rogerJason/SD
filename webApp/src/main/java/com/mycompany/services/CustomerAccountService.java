@@ -7,7 +7,7 @@ import com.mycompany.domain.CustomerAccount;
 public interface CustomerAccountService {
 	public int insertRow(CustomerAccount customeraccount);
 
-	public List<CustomerAccount> getList();
+	public List<Object[]> getList();
 
 	public CustomerAccount getRowById(int id);
 

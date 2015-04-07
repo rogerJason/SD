@@ -7,7 +7,7 @@ import com.mycompany.domain.CustomerAccount;
 public interface CustomerAccountDao {
 	public int insertRow(CustomerAccount customerAccount);
 
-	public List<CustomerAccount> getList();
+	public List<Object[]> getList();
 
 	public CustomerAccount getRowById(int id);
 

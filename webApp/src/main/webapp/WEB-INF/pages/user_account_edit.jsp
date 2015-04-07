@@ -44,6 +44,10 @@
                                             <table width="400px" height="150px">
                                                 <form:hidden path="id" value="${accountObject.id}" />
                                                 <tr>
+                                                    <td><form:label path="IBAN">IBAN</form:label></td>                                      
+                                                    <td><form:input path="IBAN" value="${accountObject.IBAN}" /></td>
+                                                </tr>
+                                                <tr>
                                                     <td><form:label path="type">Type</form:label></td>                                      
                                                     <td><form:input path="type" value="${accountObject.type}" /></td>
                                                 </tr>

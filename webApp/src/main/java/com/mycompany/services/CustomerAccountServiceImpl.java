@@ -24,7 +24,7 @@ public class CustomerAccountServiceImpl implements CustomerAccountService{
 	}
 
         @Override
-	public List<CustomerAccount> getList() {
+	public List<Object[]> getList() {
 		return customerAccountDao.getList();
 	}
 

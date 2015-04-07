@@ -43,6 +43,10 @@
                                                    action="user_account_register">
                                             <table width="400px" height="150px">
                                                 <tr>
+                                                    <td><form:label path="IBAN">IBAN</form:label></td>
+                                                    <td><form:input path="IBAN" /></td>
+                                                </tr>
+                                                <tr>
                                                     <td><form:label path="type">Type</form:label></td>
                                                     <td><form:input path="type" /></td>
                                                 </tr>

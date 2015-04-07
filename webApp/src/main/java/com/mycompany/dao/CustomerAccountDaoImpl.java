@@ -38,7 +38,7 @@ public class CustomerAccountDaoImpl implements CustomerAccountDao{
 	}
 
         @Override
-	public List<CustomerAccount> getList() {
+	public List<Object[]> getList() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
 		//List<CustomerAccount> customerAccountList = session.createQuery("from CustomerAccount").list();
@@ -47,17 +47,16 @@ public class CustomerAccountDaoImpl implements CustomerAccountDao{
                         + "WHERE ca.idCustomer = c.id").list();
 		session.close();
                 
+                /*
                 List<CustomerAccount> customerAccountList = new ArrayList<>();
-                
                 for (Object[] result : joinedList) {
                 CustomerAccount ca = (CustomerAccount) result[0];
                 Client client = (Client) result[1];
-                System.out.println("\nCLIENT IS: " + client);
-                
                 customerAccountList.add(ca);
                 }
+                */
                 
-		return customerAccountList;
+		return joinedList;
 	}
 
         @Override

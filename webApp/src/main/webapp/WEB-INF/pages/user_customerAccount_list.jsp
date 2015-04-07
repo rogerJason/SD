@@ -55,17 +55,17 @@
                                                         style="background-color: white; color: black; text-align: center;"
                                                         height="30px">
 
-                                                        <td><c:out value="${customerAccount.idCustomer}" />
+                                                        <td><c:out value="${customerAccount[0].idCustomer}" />
                                                         </td>
-                                                        <td><c:out value="${customerAccount.idCustomer}" />
+                                                        <td><c:out value="${customerAccount[1].firstName} ${customerAccount[1].lastName}" />
                                                         </td>
-                                                        <td><c:out value="${customerAccount.idAccount}" />
+                                                        <td><c:out value="${customerAccount[0].idAccount}" />
                                                         </td>
-                                                        <td><c:out value="${customerAccount.creation}" />
+                                                        <td><c:out value="${customerAccount[0].creation}" />
                                                         </td>
 
-                                                        <td><a href="user_customerAccount_edit?id=${customerAccount.id}">Edit</a></td>
-                                                        <td><a href="user_customerAccount_delete?id=${customerAccount.id}">Delete</a></td>
+                                                        <td><a href="user_customerAccount_edit?id=${customerAccount[0].id}">Edit</a></td>
+                                                        <td><a href="user_customerAccount_delete?id=${customerAccount[0].id}">Delete</a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </table>
