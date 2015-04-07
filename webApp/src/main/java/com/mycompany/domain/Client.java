@@ -1,9 +1,16 @@
 package com.mycompany.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Client {
@@ -25,6 +32,12 @@ public class Client {
 
     @Column(name = "id_card_nr")
     private String idCardNr;
+    
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="customer_account", 
+                joinColumns={@JoinColumn(name="idcustomer")}, 
+                inverseJoinColumns={@JoinColumn(name="idaccount")})
+    private Set<Account> accounts = new HashSet<>(0);
 
     public int getId() {
         return id;

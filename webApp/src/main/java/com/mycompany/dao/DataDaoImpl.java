@@ -13,9 +13,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.mycompany.domain.Client;
+import org.springframework.stereotype.Repository;
 
 @Configuration
 @ComponentScan("com.mycompany.dao") // No need to include component-scan in xml
+@Repository("dataDao")
 public class DataDaoImpl implements DataDao {
 
     @Autowired

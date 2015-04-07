@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.mycompany.dao.AccountDao;
 import com.mycompany.domain.Account;
+import org.springframework.stereotype.Service;
 
 @Configuration
 @ComponentScan("com.mycompany.services") // No need to include component-scan in xml
+@Service("accountService")
 public class AccountServiceImpl implements AccountService{
 	
 	@Autowired

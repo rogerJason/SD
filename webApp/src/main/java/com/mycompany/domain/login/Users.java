@@ -24,8 +24,9 @@ public class Users {
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 
+        // Value of mappedBy is name of the field that is owning side of bidirectional relationship. 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+	private Set<UserRole> userRole = new HashSet<>(0);
 
 	
 	public String getUsername() {

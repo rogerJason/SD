@@ -1,9 +1,12 @@
 package com.mycompany.domain;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Account {
@@ -27,6 +30,9 @@ public class Account {
 
     @Column(name = "last_access")
     private String lastAccess;
+    
+    @ManyToMany(mappedBy="accounts")
+    private Set<Client> clients = new HashSet<>();
 
     public int getId() {
         return idAccount;

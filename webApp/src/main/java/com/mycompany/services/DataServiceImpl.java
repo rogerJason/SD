@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.mycompany.dao.DataDao;
 import com.mycompany.domain.Client;
+import org.springframework.stereotype.Service;
 
 @Configuration
 @ComponentScan("com.mycompany.services") // No need to include component-scan in xml
+@Service("dataService")
 public class DataServiceImpl implements DataService {
 	
 	@Autowired

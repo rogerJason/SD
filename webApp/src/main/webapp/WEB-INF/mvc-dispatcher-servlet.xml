@@ -27,6 +27,7 @@
             <list>  
                 <value>com.mycompany.domain.Client</value> 
                 <value>com.mycompany.domain.Account</value> 
+                <value>com.mycompany.domain.CustomerAccount</value>
 		<value>com.mycompany.domain.login.Users</value>
 		<value>com.mycompany.domain.login.UserRole</value>				
             </list>  
@@ -57,8 +58,4 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-
-	<bean id="dataDaoImpl" class="com.mycompany.dao.DataDaoImpl" />
-	<bean id="dataServiceImpl" class="com.mycompany.services.DataServiceImpl" />
-
 </beans>

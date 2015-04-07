@@ -26,7 +26,7 @@
                                 <li><a href="login">Login</a></li>
                                 <li><a href="user_list">Clients</a></li>
                                 <li><a href="user_account_list">Accounts</a></li>
-                                <li><a href="#">Links</a></li>
+                                <li><a href="user_customerAccount_list">Links</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>
@@ -41,62 +41,24 @@
                                     <p>The bank's 2008 acquisition of Merrill Lynch made CB Bank the world's largest wealth management corporation and a major player in the investment banking market. According to the Scorpio Partnership Global Private Banking Benchmark 2014 it had assets under management (AuM) of 1,866.6 (USD Bn) an increase of 12.5% on 2013</p>
                                 </div>
                             </div>
-                            <div class="post">
-                                <h2 class="title"><a href="#">Lorem ipsum sed aliquam</a></h2>
-                                <p class="meta">Posted by <a href="#">Someone</a> on March 8, 2010
-                                    &nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full article</a></p>
-                                <div class="entry">
-                                    <p><img src="images/img06.jpg" width="143" height="143" alt="" class="alignleft border" />Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, consectetuer nisl felis ac diam.</p>
-                                </div>
-                            </div>
-                            <div class="post">
-                                <h2 class="title"><a href="#">Phasellus pellentesque turpis </a></h2>
-                                <p class="meta">Posted by <a href="#">Someone</a> on March 8, 2010
-                                    &nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full article</a></p>
-                                <div class="entry">
-                                    <p><img src="images/img05.jpg" width="143" height="143" alt="" class="alignleft border" />Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc.</p>
-                                </div>
-                            </div>
                             <div style="clear: both;">&nbsp;</div>
                         </div>
                         <!-- end #content -->
                         <div id="sidebar">
                             <ul>
                                 <li>
-                                    <h2>Aliquam tempus</h2>
-                                    <p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
+                                    <h2>Our Motto:</h2>
+                                    <p>"Invest with confidence"</p>
                                 </li>
                                 <li>
                                     <h2>Categories</h2>
                                     <ul>
-                                        <li><a href="#">Aliquam libero</a></li>
-                                        <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                        <li><a href="#">Metus aliquam pellentesque</a></li>
-                                        <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                        <li><a href="#">Urnanet non molestie semper</a></li>
-                                        <li><a href="#">Proin gravida orci porttitor</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h2>Blogroll</h2>
-                                    <ul>
-                                        <li><a href="#">Aliquam libero</a></li>
-                                        <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                        <li><a href="#">Metus aliquam pellentesque</a></li>
-                                        <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                        <li><a href="#">Urnanet non molestie semper</a></li>
-                                        <li><a href="#">Proin gravida orci porttitor</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h2>Archives</h2>
-                                    <ul>
-                                        <li><a href="#">Aliquam libero</a></li>
-                                        <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                        <li><a href="#">Metus aliquam pellentesque</a></li>
-                                        <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                        <li><a href="#">Urnanet non molestie semper</a></li>
-                                        <li><a href="#">Proin gravida orci porttitor</a></li>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="#">Clients</a></li>
+                                        <li><a href="#">Accounts</a></li>
+                                        <li><a href="#">Links</a></li>
+                                        <li><a href="#">Contact</a></li>
                                     </ul>
                                 </li>
                             </ul>
