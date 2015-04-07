@@ -44,6 +44,7 @@
                                                     height="40px">
 
                                                     <td>Id Customer</td>
+                                                    <td>Full Name</td>
                                                     <td>Id Account</td>
                                                     <td>Creation</td>
                                                     <td>Edit</td>
@@ -54,6 +55,8 @@
                                                         style="background-color: white; color: black; text-align: center;"
                                                         height="30px">
 
+                                                        <td><c:out value="${customerAccount.idCustomer}" />
+                                                        </td>
                                                         <td><c:out value="${customerAccount.idCustomer}" />
                                                         </td>
                                                         <td><c:out value="${customerAccount.idAccount}" />

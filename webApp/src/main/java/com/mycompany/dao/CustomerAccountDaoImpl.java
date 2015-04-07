@@ -1,5 +1,6 @@
 package com.mycompany.dao;
 
+import com.mycompany.domain.Client;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.mycompany.domain.CustomerAccount;
+import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 @Configuration
@@ -39,8 +41,22 @@ public class CustomerAccountDaoImpl implements CustomerAccountDao{
 	public List<CustomerAccount> getList() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<CustomerAccount> customerAccountList = session.createQuery("from CustomerAccount").list();
+		//List<CustomerAccount> customerAccountList = session.createQuery("from CustomerAccount").list();
+                
+                List<Object[]> joinedList = session.createQuery("from CustomerAccount ca JOIN ca.client c "
+                        + "WHERE ca.idCustomer = c.id").list();
 		session.close();
+                
+                List<CustomerAccount> customerAccountList = new ArrayList<>();
+                
+                for (Object[] result : joinedList) {
+                CustomerAccount ca = (CustomerAccount) result[0];
+                Client client = (Client) result[1];
+                System.out.println("\nCLIENT IS: " + client);
+                
+                customerAccountList.add(ca);
+                }
+                
 		return customerAccountList;
 	}
 

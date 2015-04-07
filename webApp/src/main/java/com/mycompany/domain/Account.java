@@ -4,9 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Account {
@@ -31,8 +35,8 @@ public class Account {
     @Column(name = "last_access")
     private String lastAccess;
     
-    @ManyToMany(mappedBy="accounts")
-    private Set<Client> clients = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+    private Set<CustomerAccount> customerAccount = new HashSet<>(0);
 
     public int getId() {
         return idAccount;

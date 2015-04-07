@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Client {
@@ -33,11 +34,8 @@ public class Client {
     @Column(name = "id_card_nr")
     private String idCardNr;
     
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="customer_account", 
-                joinColumns={@JoinColumn(name="idcustomer")}, 
-                inverseJoinColumns={@JoinColumn(name="idaccount")})
-    private Set<Account> accounts = new HashSet<>(0);
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    private Set<CustomerAccount> customerAccount = new HashSet<>(0);
 
     public int getId() {
         return id;
