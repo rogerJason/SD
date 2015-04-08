@@ -82,10 +82,6 @@
                                                     <td><form:label path="overdraft">Overdraft</form:label></td>
                                                     <td><form:input path="overdraft" value="${accountObject.overdraft}"/></td>
                                                 </tr>
-                                                <tr>
-                                                    <td><form:label path="lastAccess">Last Access</form:label></td>
-                                                    <td><form:input path="lastAccess" value="${accountObject.lastAccess}"/></td>
-                                                </tr>
 
                                                 <tr>
                                                     <td></td>                                                   

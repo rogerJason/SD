@@ -1,5 +1,6 @@
 package com.mycompany.domain;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -36,7 +37,7 @@ public class Account {
     private String overdraft;
 
     @Column(name = "last_access")
-    private String lastAccess;
+    private Timestamp lastAccess;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
     private Set<CustomerAccount> customerAccount = new HashSet<>(0);
@@ -89,11 +90,11 @@ public class Account {
         this.overdraft = overdraft;
     }
 
-    public String getLastAccess() {
+    public Timestamp getLastAccess() {
         return lastAccess;
     }
 
-    public void setLastAccess(String lastAccess) {
+    public void setLastAccess(Timestamp lastAccess) {
         this.lastAccess = lastAccess;
     }
 

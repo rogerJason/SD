@@ -69,10 +69,6 @@
                                                     <td><form:label path="idAccount">Id Account</form:label></td>
                                                     <td><form:input path="idAccount" value="${customerAccountObject.idAccount}"/></td>
                                                 </tr>
-                                                <tr>
-                                                    <td><form:label path="creation">Creation</form:label></td>
-                                                    <td><form:input path="creation" value="${customerAccountObject.creation}"/></td>
-                                                </tr>
 
                                                 <tr>
                                                     <td></td>                                                   

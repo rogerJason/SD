@@ -1,5 +1,6 @@
 package com.mycompany.domain;
 
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ public class CustomerAccount {
     private int idAccount;
 
     @Column(name = "creation")
-    private String creation;
+    private Timestamp creation;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idcustomer", referencedColumnName = "id", insertable = false, updatable = false)
@@ -59,11 +60,11 @@ public class CustomerAccount {
         this.idAccount = idAccount;
     }
 
-    public String getCreation() {
+    public Timestamp getCreation() {
         return creation;
     }
 
-    public void setCreation(String creation) {
+    public void setCreation(Timestamp creation) {
         this.creation = creation;
     }
 

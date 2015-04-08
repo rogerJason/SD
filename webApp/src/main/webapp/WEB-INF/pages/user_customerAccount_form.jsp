@@ -68,10 +68,6 @@
                                                     <td><form:label path="idAccount">Id Account</form:label></td>
                                                     <td><form:input path="idAccount" /></td>
                                                 </tr>
-                                                <tr>
-                                                    <td><form:label path="creation">Creation</form:label></td>
-                                                    <td><form:input path="creation" /></td>
-                                                </tr>
 
                                                 <tr>
                                                     <td></td>
