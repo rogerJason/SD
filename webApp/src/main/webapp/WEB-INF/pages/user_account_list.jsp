@@ -97,6 +97,8 @@
 
                                         <br />
                                         <a href="user_account_form">Click Here to add new Account</a>
+                                        <br/>
+                                        <a href="user_account_transfer">Click Here to Transfer Money</a>
                                     </center>
                                 </div>                              
                             </div>

@@ -37,6 +37,11 @@ public class AccountServiceImpl implements AccountService{
 	public int updateRow(Account account) {
 		return accountDao.updateRow(account);
 	}
+        
+        @Override
+	public void updateRows(int from, int to, int amount) {
+		accountDao.updateRows(from, to, amount);
+	}
 
         @Override
 	public int deleteRow(int id) {

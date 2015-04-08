@@ -12,6 +12,8 @@ public interface AccountService {
 	public Account getRowById(int id);
 
 	public int updateRow(Account account);
+        
+        public void updateRows(int from, int to, int amount);
 
 	public int deleteRow(int id);
 
