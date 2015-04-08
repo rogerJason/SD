@@ -56,7 +56,7 @@
                                         <div style="color: darkorange; font-size: 30px">CB Bank | Client Details</div>
                                         <br />
                                         <c:if test="${!empty clientList}">
-                                            <table border="1" bgcolor="black" width="600px">
+                                            <table border="1" bgcolor="black" width="900px">
                                                 <tr
                                                     style="background-color: orange; color: white; text-align: center;"
                                                     height="40px">

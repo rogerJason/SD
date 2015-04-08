@@ -28,7 +28,7 @@ public class Account {
     private String type;
 
     @Column(name = "balance")
-    private String balance;
+    private int balance;
 
     @Column(name = "interest_rate")
     private String interestRate;
@@ -66,11 +66,11 @@ public class Account {
         this.type = type;
     }
 
-    public String getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
