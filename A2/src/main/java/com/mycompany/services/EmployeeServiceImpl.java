@@ -30,18 +30,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee getRowById(int id) {
+	public Employee getRowById(int id) throws JAXBException{
 		return employeeDao.getRowById(id);
 	}
 
 	@Override
-	public int updateRow(Employee employee) {
-		return employeeDao.updateRow(employee);
+	public void updateRow(Employee employee) throws JAXBException{
+		employeeDao.updateRow(employee);
 	}
 
 	@Override
-	public int deleteRow(int id) {
-		return employeeDao.deleteRow(id);
+	public void deleteRow(int id) throws JAXBException{
+		employeeDao.deleteRow(id);
 	}
 
 }

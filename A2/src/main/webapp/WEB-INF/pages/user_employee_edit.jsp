@@ -57,39 +57,25 @@
                                     <center>
                                         <div style="color: darkorange; font-size: 30px">CB Bank | Edit Details</div>
                                         <br />
-                                        <c:url var="clientRegistration" value="saveClient.html" />
-                                        <form:form id="registerForm" modelAttribute="client" method="post"
-                                                   action="user_update">
+                                        <c:url var="employeeRegistration" value="saveEmployee.html" />
+                                        <form:form id="registerForm" modelAttribute="employee" method="post"
+                                                   action="user_employee_update">
                                             <table width="400px" height="150px">
-                                                <form:hidden path="id" value="${clientObject.id}" />
+                                                <form:hidden path="id" value="${employeeObject.id}" />
                                                 <tr>
                                                     <td><form:label path="firstName">First Name</form:label></td>                                      
-                                                    <td><form:input path="firstName" value="${clientObject.firstName}" /></td>
+                                                    <td><form:input path="firstName" value="${employeeObject.firstName}" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td><form:label path="lastName">Last Name</form:label></td>
-                                                    <td><form:input path="lastName" value="${clientObject.lastName}"/></td>
+                                                    <td><form:input path="lastName" value="${employeeObject.lastName}"/></td>
                                                 </tr>
+                                                
                                                 <tr>
-                                                    <td><form:label path="email">Email</form:label></td>
-                                                    <td><form:input path="email" value="${clientObject.email}"/></td>
+                                                    <td><form:label path="income">Income</form:label></td>
+                                                    <td><form:input path="income" value="${employeeObject.income}"/></td>
                                                 </tr>
-                                                <tr>
-                                                    <td><form:label path="phone">Phone</form:label></td>
-                                                    <td><form:input path="phone" value="${clientObject.phone}"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form:label path="address">Address</form:label></td>
-                                                    <td><form:input path="address" value="${clientObject.address}"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form:label path="PNC">PNC</form:label></td>
-                                                    <td><form:input path="PNC" value="${clientObject.PNC}"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><form:label path="idCardNr">Id Card Nr</form:label></td>
-                                                    <td><form:input path="idCardNr" value="${clientObject.idCardNr}"/></td>
-                                                </tr>
+                                                                                                                                             
                                                 <tr>
                                                     <td></td>                                                   
                                                     <td><br /><input type="submit" value="Update" />

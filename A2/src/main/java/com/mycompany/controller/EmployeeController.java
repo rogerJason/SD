@@ -84,19 +84,19 @@ public class EmployeeController {
     }
 
     @RequestMapping("user_employee_delete")
-    public ModelAndView deleteClient(@RequestParam int id) {
+    public ModelAndView deleteClient(@RequestParam int id) throws JAXBException{
         employeeService.deleteRow(id);
         return new ModelAndView("redirect:user_employee_list");
     }
 
     @RequestMapping("user_employee_edit")
-    public ModelAndView editClient(@RequestParam int id, @ModelAttribute Employee employee) {
+    public ModelAndView editClient(@RequestParam int id, @ModelAttribute Employee employee) throws JAXBException {
         Employee employeeObject = employeeService.getRowById(id);
         return new ModelAndView("user_employee_edit", "employeeObject", employeeObject);
     }
 
     @RequestMapping("user_employee_update")
-    public ModelAndView updateClient(@ModelAttribute Employee employee) {
+    public ModelAndView updateClient(@ModelAttribute Employee employee) throws JAXBException {
         employeeService.updateRow(employee);
         return new ModelAndView("redirect:user_employee_list");
     }

@@ -10,10 +10,10 @@ public interface EmployeeService {
 
 	public List<Employee> getList() throws JAXBException;
 
-	public Employee getRowById(int id);
+	public Employee getRowById(int id) throws JAXBException;
 
-	public int updateRow(Employee employee);
+	public void updateRow(Employee employee) throws JAXBException;
 
-	public int deleteRow(int id);
+	public void deleteRow(int id) throws JAXBException;
 
 }

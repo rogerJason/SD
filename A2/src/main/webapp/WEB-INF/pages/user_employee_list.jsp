@@ -79,8 +79,8 @@
                                                         <td><c:out value="${employee.income}" />
                                                         </td>
                                                         
-                                                        <td><a href="user_edit?id=${employee.id}">Edit</a></td>
-                                                        <td><a href="user_delete?id=${employee.id}">Delete</a></td>
+                                                        <td><a href="user_employee_edit?id=${employee.id}">Edit</a></td>
+                                                        <td><a href="user_employee_delete?id=${employee.id}">Delete</a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </table>

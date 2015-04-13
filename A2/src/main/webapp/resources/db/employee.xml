@@ -9,7 +9,7 @@
     <employee>
         <id>2</id>
         <firstName>John</firstName>
-        <lastName>MclaneCB</lastName>
+        <lastName>Mclane</lastName>
         <income>200.0</income>
     </employee>
     <employee>
@@ -20,8 +20,8 @@
     </employee>
     <employee>
         <id>4</id>
-        <firstName>Haba</firstName>
-        <lastName>Szidonia</lastName>
-        <income>1500.0</income>
+        <firstName>Vasile</firstName>
+        <lastName>Alecsandri</lastName>
+        <income>2134.0</income>
     </employee>
 </employees>
