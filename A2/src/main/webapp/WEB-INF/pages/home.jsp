@@ -5,18 +5,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB Bank | Home Page</title>
+        <title>CB BookStore | Home Page</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.jcarousel.min.js" />"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/functions.js" />"></script>
-
     </head>
     <body>
         <!-- Header -->
         <div id="header" class="shell">
-            <div id="logo"><h1><a href="#">BestSeller</a></h1><span><a href="#">free css template</a></span></div>
+            <div id="logo"><h1><a href="home">BestSeller</a></h1></div>
             <!-- Navigation -->
             <div id="navigation">
                 <ul>
@@ -32,9 +31,17 @@
             <div class="cl">&nbsp;</div>
             <!-- Login-details -->
             <div id="login-details">
-                <p>Welcome, <a href="#" id="user">Guest</a> .</p><p><a href="#" class="cart" >
-                        <img src="<c:url value="/resources/images/cart-icon.png" />" alt="" /></a>
+                <c:url var="logoutUrl" value="j_spring_security_logout" />
+                <form method="post" action="${logoutUrl}">
+                    <p>Welcome, <a href="#" id="user">
+                            <sec:authorize access="isAuthenticated()"> 
+                                <sec:authentication property="principal.username" />
+                            </sec:authorize></a> . <input type="submit" id="search-submit" value="Log Out" /></p>
+                    <p><a href="#" class="cart" >
+                            <img src="<c:url value="/resources/images/cart-icon.png" />" alt="" /></a>
                         Shopping Cart (0) <a href="#" class="sum">$0.00</a></p>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
             </div>
             <!-- End Login-details -->
         </div>
@@ -45,13 +52,13 @@
                 <ul>
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/books.png" />" alt="" />
+                            <img src="<c:url value="/resources/images/books1.jpg" />" alt="" />
                         </div>
                         <div class="details">
-                            <h2>Bestsellers</h2>
-                            <h3>Special Offers</h3>
-                            <p class="title">Pellentesque congue lorem quis massa blandit non pretium nisi pharetra</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio in tortor scelerisque dictum. Phasellus varius sem sit amet metus volutpat vel vehicula nunc lacinia.</p>
+                            <h2>Thrillers</h2>
+                            <h3>This Month's Top Picks</h3>
+                            <p class="title">The first in a new series from David Baldacci</p>
+                            <p class="description">A Stone Barrington novel from Stuart Woods, and more exciting new reads.</p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </li>
@@ -62,32 +69,32 @@
                         <div class="details">
                             <h2>Bestsellers</h2>
                             <h3>Special Offers</h3>
-                            <p class="title">Pellentesque congue lorem quis massa blandit non pretium nisi pharetra</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio in tortor scelerisque dictum. Phasellus varius sem sit amet metus volutpat vel vehicula nunc lacinia.</p>
+                            <p class="title">The World is Flat</p>
+                            <p class="description">The Coming Economic Collapse</p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </li>
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/books.png" />" alt="" />
+                            <img src="<c:url value="/resources/images/books2.jpg" />" alt="" />
                         </div>
                         <div class="details">
-                            <h2>Bestsellers</h2>
-                            <h3>Special Offers</h3>
-                            <p class="title">Pellentesque congue lorem quis massa blandit non pretium nisi pharetra</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio in tortor scelerisque dictum. Phasellus varius sem sit amet metus volutpat vel vehicula nunc lacinia.</p>
+                            <h2>Inspiring</h2>
+                            <h3>Life Stories</h3>
+                            <p class="title">Perfect for Mother's Day</p>
+                            <p class="description">These are the true stories of glamorous, funny, fierce, and courageous women.</p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </li>
                     <li>
                         <div class="image">
-                            <img src="<c:url value="/resources/images/books.png" />" alt="" />
+                            <img src="<c:url value="/resources/images/books3.jpg" />" alt="" />
                         </div>
                         <div class="details">
-                            <h2>Bestsellers</h2>
-                            <h3>Special Offers</h3>
-                            <p class="title">Pellentesque congue lorem quis massa blandit non pretium nisi pharetra</p>
-                            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id odio in tortor scelerisque dictum. Phasellus varius sem sit amet metus volutpat vel vehicula nunc lacinia.</p>
+                            <h2>The Book</h2>
+                            <h3>Nerd Diet</h3>
+                            <p class="title">You’re in the middle of what’s shaping up to be a truly excellent book.</p>
+                            <p class="description"> You’ve been reading for the past hour and a half, and the odds of you parting with your new beloved before you reach that bittersweet conclusion rival the odds of Mr. Darcy smiling at a public ball. </p>
                             <a href="#" class="read-more-btn">Read More</a>
                         </div>
                     </li>
@@ -109,32 +116,38 @@
                     <li>
                         <h4>Categories</h4>
                         <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Morbi eget</a></li>
-                            <li><a href="#">Nulla egestas</a></li>
-                            <li><a href="#">Curabitur venenatis</a></li>
-                            <li><a href="#">Ut dictum purus</a></li>
-                            <li><a href="#">Curabitur imperdiet</a></li>
-                            <li><a href="#">Aliquam elementum</a></li>
+                            <li><a href="#">Computing</a></li>
+                            <li><a href="#">Crime & Thriller</a></li>
+                            <li><a href="#">Fiction</a></li>
+                            <li><a href="#">Humour</a></li>
+                            <li><a href="#">Romance</a></li>
+                            <li><a href="#">Sport</a></li>
+                            <li><a href="#">Medical</a></li>
                         </ul>
                     </li>
                     <li>
                         <h4>Authors</h4>
                         <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Morbi eget</a></li>
-                            <li><a href="#">Nulla egestas</a></li>
-                            <li><a href="#">Curabitur venenatis</a></li>
-                            <li><a href="#">Ut dictum purus</a></li>
-                            <li><a href="#">Curabitur imperdiet</a></li>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Morbi eget</a></li>
-                            <li><a href="#">Nulla egestas</a></li>
-                            <li><a href="#">Curabitur venenatis</a></li>
-                            <li><a href="#">Ut dictum purus</a></li>
-                            <li><a href="#">Curabitur imperdiet</a></li>
+                            <li><a href="#">Steve Krug</a></li>
+                            <li><a href="#">Jamie Bartlett</a></li>
+                            <li><a href="#">Sophie Hannah</a></li>
+                            <li><a href="#">Lee Child</a></li>
+                            <li><a href="#">John Darnielle</a></li>
+                            <li><a href="#">Barney Stinson</a></li>
+                            <li><a href="#">Viktor E. Frankl</a></li>
+                            <li><a href="#">Keri Smith</a></li>
                         </ul>
                     </li>
+                    
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <li>
+                        <h4>Admin Panel</h4>
+                        <ul>
+                            <li><a href="admin_employee_list">Employees</a></li>
+                            <li><a href="admin_book_list">Books</a></li>        
+                        </ul>
+                    </li>
+                    </sec:authorize>
                 </ul>
             </div>
             <!-- End Sidebar -->
@@ -349,15 +362,16 @@
             <div class="top">
                 <div class="cnt">
                     <div class="col about">
-                        <h4>About BestSellers</h4>
-                        <p>Nulla porttitor pretium mattis. Mauris lorem massa, ultricies non mattis bibendum, semper ut erat. Morbi vulputate placerat ligula. Fusce <br />convallis, nisl a pellentesque viverra, ipsum leo sodales sapien, vitae egestas dolor nisl eu tortor. Etiam ut elit vitae nisl tempor tincidunt. Nunc sed elementum est. Phasellus sodales viverra mauris nec dictum. Fusce a leo libero. Cras accumsan enim nec massa semper eu hendrerit nisl faucibus. Sed lectus ligula, consequat eget bibendum eu, consequat nec nisl. In sed consequat elit. Praesent nec iaculis sapien. <br />Curabitur gravida pretium tincidunt.  </p>
+                        <h4>About CB BookStore</h4>
+                        <p align="justify">Welcome to CB BookStore, the world's leading specialist online bookstore. We're proud to offer over 12 million titles, all at unbeatable prices with free delivery worldwide to over 100 countries. Whatever your interest or passion, you'll find something interesting in our bookshop full of delights.  </p>
+                        <p align="justify">CB BookStore is the fastest growing bookseller in Europe, shipping to thousands of customers every day throughout the world from our fulfilment centre in Gloucester, United Kingdom. We have over a million customers and a reputation for extremely high service levels. </p>
                     </div>
                     <div class="col store">
                         <h4>Store</h4>
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Special Offers</a></li>
-                            <li><a href="#">Log In</a></li>
+                            <li><a href="login">Log In</a></li>
                             <li><a href="#">Account</a></li>
                             <li><a href="#">Basket</a></li>
                             <li><a href="#">Checkout</a></li>
@@ -365,7 +379,7 @@
                     </div>
                     <div class="col" id="newsletter">
                         <h4>Newsletter</h4>
-                        <p>Lorem ipsum dolor sit amet  consectetur. </p>
+                        <p>Enter Your Details for news: </p>
                         <form action="" method="post">
                             <input type="text" class="field" value="Your Name" title="Your Name" />
                             <input type="text" class="field" value="Email" title="Email" />
@@ -374,7 +388,7 @@
                     </div>
                     <div class="cl">&nbsp;</div>
                     <div class="copy">
-                        <p>&copy; <a href="#">BestSeller.com</a>. Design by <a href="http://css-free-templates.com/">CSS-FREE-TEMPLATES.COM</a></p>
+                        <p>&copy; <a href="#">CBBookStore.com</a>. Design by CB</a></p>
                     </div>
                 </div>
             </div>

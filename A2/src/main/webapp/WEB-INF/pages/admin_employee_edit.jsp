@@ -1,12 +1,13 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Login</title>
+        <title>CB BookStore | Employees</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -144,36 +145,42 @@
             <!-- End Sidebar -->
             <!-- Content -->
             <div id="content">
+
                 <div class="post">
                     <div class="entry">
                         <center>
-                            <div style="color: teal; font-size: 30px">Login</div>
-                            <br /> <br /> <br />
-                            <div style="border: 1px solid black; width: 400px; padding-top: 30px;  font-size: 15px;">
-                                Please enter your username and password to login ! <br /> 
-                                <span style="color: red">${message}</span> <br />
-                                <form:form method="post" action="j_spring_security_check" modelAttribute="users">
-                                    <table>
-                                        <tr>
-                                            <td>Username:</td>
-                                            <td><form:input path="username" style="font-size: 15px; " /></td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>Password:</td>
-                                            <td><form:input type="password" path="password" style="font-size: 15px; " /></td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td><input type="submit" style="font-size: 15px; "/></td>
-                                        </tr>
-                                    </table>
-                                </form:form>
-                            </div>
+                            <div style="color: teal; font-size: 30px">CB BookStore | Edit Details</div>
+                            <br />
+                            <c:url var="employeeRegistration" value="saveEmployee.html" />
+                            <form:form id="registerForm" modelAttribute="employee" method="post"
+                                       action="admin_employee_update">
+                                <table width="400px" height="150px" style="font-size: 15px">
+                                    <form:hidden path="id" value="${employeeObject.id}" />
+                                    <tr>
+                                        <td><form:label path="firstName">First Name</form:label></td>                                      
+                                        <td><form:input path="firstName" value="${employeeObject.firstName}" style="font-size: 15px"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><form:label path="lastName">Last Name</form:label></td>
+                                        <td><form:input path="lastName" value="${employeeObject.lastName}" style="font-size: 15px"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><form:label path="income">Income</form:label></td>
+                                        <td><form:input path="income" value="${employeeObject.income}" style="font-size: 15px"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>                                                   
+                                        <td><br /><input type="submit" value="Update" style="font-size: 15px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form:form>
                         </center>
-                    </div>
+                    </div>                              
                 </div>
+
             </div>
             <!-- End Content -->
             <div class="cl">&nbsp;</div>

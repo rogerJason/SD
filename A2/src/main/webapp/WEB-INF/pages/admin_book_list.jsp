@@ -1,4 +1,3 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -6,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Login</title>
+        <title>CB BookStore | Books</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -144,36 +143,49 @@
             <!-- End Sidebar -->
             <!-- Content -->
             <div id="content">
-                <div class="post">
-                    <div class="entry">
-                        <center>
-                            <div style="color: teal; font-size: 30px">Login</div>
-                            <br /> <br /> <br />
-                            <div style="border: 1px solid black; width: 400px; padding-top: 30px;  font-size: 15px;">
-                                Please enter your username and password to login ! <br /> 
-                                <span style="color: red">${message}</span> <br />
-                                <form:form method="post" action="j_spring_security_check" modelAttribute="users">
-                                    <table>
-                                        <tr>
-                                            <td>Username:</td>
-                                            <td><form:input path="username" style="font-size: 15px; " /></td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>Password:</td>
-                                            <td><form:input type="password" path="password" style="font-size: 15px; " /></td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td><input type="submit" style="font-size: 15px; "/></td>
-                                        </tr>
-                                    </table>
-                                </form:form>
-                            </div>
-                        </center>
-                    </div>
-                </div>
+                <center>
+                    <div style="color: teal; font-size: 30px">CB BookStore | Book Details</div>
+                    <br /> <br /> <br /> 
+                    <c:if test="${!empty bookList}">
+                        <table border="1" bgcolor="black" width="500px" style="font-size: 15px; ">
+                            <tr
+                                style="background-color: teal; color: white; text-align: center;"
+                                height="40px">
+
+                                <td>Title</td>
+                                <td>Author</td>
+                                <td>Genre</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <c:forEach items="${bookList}" var="book">
+                                <tr
+                                    style="background-color: white; color: black; text-align: center;"
+                                    height="30px">
+
+                                    <td><c:out value="${book.title}" />
+                                    </td>
+                                    <td><c:out value="${book.author}" />
+                                    </td>
+                                    <td><c:out value="${book.genre}" />
+                                    </td>
+                                    <td><c:out value="${book.quantity}" />
+                                    </td>
+                                    <td><c:out value="${book.price}" />
+                                    </td>
+
+                                    <td><a href="admin_book_edit?id=${book.id}">Edit</a></td>
+                                    <td><a href="admin_book_delete?id=${book.id}">Delete</a></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:if>
+
+                    <br />
+                    <a href="admin_book_form" style="font-size: 15px; ">Click Here to add new Book</a>
+                </center>
             </div>
             <!-- End Content -->
             <div class="cl">&nbsp;</div>

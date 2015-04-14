@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book>
+        <id>1</id>
+        <title>Godfather</title>
+        <author>Mario Puzo</author>
+        <genre>Thriller</genre>
+        <quantity>4</quantity>
+        <price>100.0</price>
+    </book>
+    <book>
+        <id>2</id>
+        <title>The Castle</title>
+        <author>Franz Kafka</author>
+        <genre>Fantasy</genre>
+        <quantity>12</quantity>
+        <price>50.0</price>
+    </book>
+</books>
