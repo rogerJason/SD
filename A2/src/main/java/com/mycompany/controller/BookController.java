@@ -42,6 +42,12 @@ public class BookController {
         List bookList = bookService.getList();
         return new ModelAndView("admin_book_list", "bookList", bookList);
     }
+    
+    @RequestMapping("books")
+    public ModelAndView getBookList() throws JAXBException {
+        List bookList = bookService.getList();
+        return new ModelAndView("books", "bookList", bookList);
+    }
 
     @RequestMapping("admin_book_delete")
     public ModelAndView deleteBook(@RequestParam int id) throws JAXBException{

@@ -1,11 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Home Page</title>
+        <title>CB BookStore | Search</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -19,9 +20,9 @@
             <!-- Navigation -->
             <div id="navigation">
                 <ul>
-                    <li><a href="home" class="active">Home</a></li>
+                    <li><a href="home">Home</a></li>
                     <li><a href="books">Books</a></li>
-                    <li><a href="#">Promotions</a></li>
+                    <li><a href="search" class="active">Search</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contacts</a></li>
@@ -138,24 +139,125 @@
                             <li><a href="#">Keri Smith</a></li>
                         </ul>
                     </li>
-
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li>
-                            <h4>Admin Panel</h4>
-                            <ul>
-                                <li><a href="admin_employee_list">Employees</a></li>
-                                <li><a href="admin_book_list">Books</a></li>        
-                            </ul>
-                        </li>
-                    </sec:authorize>
                 </ul>
             </div>
             <!-- End Sidebar -->
             <!-- Content -->
             <div id="content">
-                
-            </div>
+                <!-- Products -->
+                <c:if test="${!empty bookList}">
+                    <div class="products">
+                        <h3>Featured Products</h3>
+                        <ul>
+                            <c:forEach items="${bookList}" var="book">
+                                <li>
+                                    <div class="product">
+                                        <a href="#" class="info">
+                                            <span class="holder">
+                                                <img src="<c:url value="/resources/images/${book.title}.jpg" />" alt="" />
+                                                <span class="book-name"><c:out value="${book.title}" /></span>
+                                                <span class="author">by <c:out value="${book.author}" /></span>
+                                                <span class="description"><c:out value="${book.genre}" /></span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="buy-btn">SELL<span class="price">
+                                                <span class="low">$</span>${fn:substringBefore(book.price, ".")}
+                                                <span class="high">${fn:substringAfter(book.price, ".")}</span></span></a> 
+                                    </div>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </c:if>
+                    <!-- End Products -->
+                </div>
                 <div class="cl">&nbsp;</div>
+                <!-- Best-sellers -->
+                <div id="best-sellers">
+                    <h3>Best Sellers</h3>
+                    <ul>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best01.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>35<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best02.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>45<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best03.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>15<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best04.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>27<span class="high">99</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best01.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>35<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best02.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>45<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best03.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>15<span class="high">00</span></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="product">
+                                <a href="#">
+                                    <img src="css/images/image-best04.jpg" alt="" />
+                                    <span class="book-name">Book Name </span>
+                                    <span class="author">by John Smith</span>
+                                    <span class="price"><span class="low">$</span>27<span class="high">99</span></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Best-sellers -->
             </div>
             <!-- End Content -->
             <div class="cl">&nbsp;</div>
