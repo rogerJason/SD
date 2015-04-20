@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Search</title>
+        <title>CB BookStore | Books</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -21,8 +21,8 @@
             <div id="navigation">
                 <ul>
                     <li><a href="home">Home</a></li>
-                    <li><a href="books">Books</a></li>
-                    <li><a href="search" class="active">Search</a></li>
+                    <li><a href="user_books" class="active">Books</a></li>
+                    <li><a href="user_search">Search</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contacts</a></li>

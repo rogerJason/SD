@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import com.mycompany.domain.Book;
 import com.mycompany.domain.Books;
 import java.io.File;
+import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -66,8 +67,8 @@ public class BookDaoImpl implements BookDao {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         Books books = (Books) jaxbUnmarshaller.unmarshal(new File(fileName));
 
-        books.getBooks().set(book.getId()-1, book); 
-        
+        books.getBooks().set(book.getId() - 1, book);
+
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(books, new File(fileName));
@@ -79,17 +80,38 @@ public class BookDaoImpl implements BookDao {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         Books books = (Books) jaxbUnmarshaller.unmarshal(new File(fileName));
 
-        books.getBooks().remove(id-1);
+        books.getBooks().remove(id - 1);
 
-        for (int i=0; i < books.getBooks().size(); i++) {
+        for (int i = 0; i < books.getBooks().size(); i++) {
             Book emp = books.getBooks().get(i);
-            emp.setId(i+1);
+            emp.setId(i + 1);
             books.getBooks().set(i, emp);
         }
 
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         jaxbMarshaller.marshal(books, new File(fileName));
+    }
+
+    @Override
+    public List<Book> searchBy(String searchedWord) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Books.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        Books books = (Books) jaxbUnmarshaller.unmarshal(new File(fileName));
+
+        List<Book> newBooks = new ArrayList<>();
+        if (searchedWord != null) {
+            for (Book bk : books.getBooks()) {
+                //if (bk.getTitle().equals(searchedWord) || bk.getAuthor().equals(searchedWord) || bk.getGenre().equals(searchedWord)) {
+                if (bk.getTitle().toLowerCase().contains(searchedWord.toLowerCase())
+                        || bk.getAuthor().toLowerCase().contains(searchedWord.toLowerCase())
+                        || bk.getGenre().toLowerCase().contains(searchedWord.toLowerCase())) {
+                    newBooks.add(bk);
+                }
+            }
+        }
+
+        return newBooks;
     }
 
 }

@@ -16,5 +16,7 @@ public interface BookDao {
     public void updateRow(Book book) throws JAXBException;
 
     public void deleteRow(int id) throws JAXBException;
+    
+    public List<Book> searchBy(String searchedWord) throws JAXBException;
 
 }

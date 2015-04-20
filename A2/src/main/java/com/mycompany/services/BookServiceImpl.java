@@ -43,5 +43,10 @@ public class BookServiceImpl implements BookService {
 	public void deleteRow(int id) throws JAXBException{
 		bookDao.deleteRow(id);
 	}
+        
+        @Override
+        public List<Book> searchBy(String searchedWord) throws JAXBException {
+            return bookDao.searchBy(searchedWord);
+        }
 
 }

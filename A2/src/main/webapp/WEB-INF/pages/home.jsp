@@ -20,8 +20,8 @@
             <div id="navigation">
                 <ul>
                     <li><a href="home" class="active">Home</a></li>
-                    <li><a href="books">Books</a></li>
-                    <li><a href="#">Promotions</a></li>
+                    <li><a href="user_books">Books</a></li>
+                    <li><a href="user_search">Search</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contacts</a></li>

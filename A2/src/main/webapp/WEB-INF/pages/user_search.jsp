@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Books</title>
+        <title>CB BookStore | Search</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -21,8 +22,8 @@
             <div id="navigation">
                 <ul>
                     <li><a href="home">Home</a></li>
-                    <li><a href="books" class="active">Books</a></li>
-                    <li><a href="#">Promotions</a></li>
+                    <li><a href="user_books">Books</a></li>
+                    <li><a href="user_search" class="active">Search</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contacts</a></li>
@@ -144,6 +145,11 @@
             <!-- End Sidebar -->
             <!-- Content -->
             <div id="content">
+                <form method="GET" action="user_search">
+                    <input type="text" name="searchString" style="font-size: 15px" value="by title, author, genre..."/>
+                    <input type="submit" value="Search" style="font-size: 15px"/>
+                </form>
+                <br/><br/>
                 <!-- Products -->
                 <c:if test="${!empty bookList}">
                     <div class="products">

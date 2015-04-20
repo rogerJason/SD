@@ -8,11 +8,14 @@ package com.mycompany.controller;
 import com.mycompany.domain.Book;
 import com.mycompany.services.BookService;
 import java.util.List;
+import java.util.Map;
 import javax.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,10 +46,10 @@ public class BookController {
         return new ModelAndView("admin_book_list", "bookList", bookList);
     }
     
-    @RequestMapping("books")
+    @RequestMapping("user_books")
     public ModelAndView getBookList() throws JAXBException {
         List bookList = bookService.getList();
-        return new ModelAndView("books", "bookList", bookList);
+        return new ModelAndView("user_books", "bookList", bookList);
     }
 
     @RequestMapping("admin_book_delete")
@@ -66,5 +69,11 @@ public class BookController {
         bookService.updateRow(book);
         return new ModelAndView("redirect:admin_book_list");
     }
-
+    
+    @RequestMapping(value = "user_search", method = GET)
+    public ModelAndView searchBy(@RequestParam(required = false) String searchString) throws JAXBException{
+        List bookList = bookService.searchBy(searchString);
+        return new ModelAndView("user_search", "bookList", bookList);
+    }
+  
 }
