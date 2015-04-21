@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <username>admin</username>
+        <enabled>1</enabled>
+        <password>$2a$10$BN7VWURwOWH9d3YPd1MoBOIWHG/UYsEZllnEizGVzhrylvLQEVQTq</password>
+    </user>
+	<user>
+        <username>Andreea</username>
+        <enabled>1</enabled>
+        <password>$2a$10$BIUa2y0Nsir0GP5mKqVp3OSLxSpuJ8PxRGpAnHMIrbnTUWNsHj05G</password>
+    </user>
+	<user>
+        <username>Andrei</username>
+        <enabled>1</enabled>
+        <password>$2a$10$BIUa2y0Nsir0GP5mKqVp3OSLxSpuJ8PxRGpAnHMIrbnTUWNsHj05G</password>
+    </user>
+	<user>
+        <username>user</username>
+        <enabled>1</enabled>
+        <password>$2a$10$BIUa2y0Nsir0GP5mKqVp3OSLxSpuJ8PxRGpAnHMIrbnTUWNsHj05G</password>
+    </user>
+</users>

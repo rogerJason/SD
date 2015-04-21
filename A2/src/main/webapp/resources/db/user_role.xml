@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users_roles>
+    <user_roles>
+        <user_role_id>1</user_role_id>
+        <role>ROLE_ADMIN</role>
+        <username>admin</username>
+    </user_roles>
+	<user_roles>
+        <user_role_id>2</user_role_id>
+        <role>ROLE_USER</role>
+        <username>user</username>
+    </user_roles>
+	<user_roles>
+        <user_role_id>3</user_role_id>
+        <role>ROLE_USER</role>
+        <username>admin</username>
+    </user_roles>
+	<user_roles>
+        <user_role_id>4</user_role_id>
+        <role>ROLE_USER</role>
+        <username>Andrei</username>
+    </user_roles>
+	<user_roles>
+        <user_role_id>5</user_role_id>
+        <role>ROLE_USER</role>
+        <username>Andreea</username>
+    </user_roles>
+</users_roles>

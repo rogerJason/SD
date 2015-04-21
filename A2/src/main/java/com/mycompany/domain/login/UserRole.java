@@ -1,30 +1,16 @@
 package com.mycompany.domain.login;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name = "user_roles", catalog = "springhibernate_db")
+@XmlRootElement(name = "user_roles")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UserRole {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_role_id", unique = true, nullable = false)
-	private Integer userRoleId;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "username", nullable = false)
-	private Users user;
-
-	@Column(name = "role", nullable = false, length = 45)
+	private Integer userRoleId;	
 	private String role;
+        private String username;
 
 	public Integer getUserRoleId() {
 		return userRoleId;
@@ -34,14 +20,6 @@ public class UserRole {
 		this.userRoleId = userRoleId;
 	}
 
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
-	}
-
 	public String getRole() {
 		return role;
 	}
@@ -49,5 +27,15 @@ public class UserRole {
 	public void setRole(String role) {
 		this.role = role;
 	}
+        
+        
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 
 }

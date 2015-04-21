@@ -17,46 +17,57 @@ import org.springframework.stereotype.Service;
 import com.mycompany.dao.login.LoginDao;
 import com.mycompany.domain.login.UserRole;
 import com.mycompany.domain.login.Users;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.bind.JAXBException;
 
 @Service("loginService")
 public class LoginServiceImpl implements UserDetailsService {
 
-	@Autowired
-	LoginDao loginDao;
+    @Autowired
+    LoginDao loginDao;
 
-	@Override
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		Users user = loginDao.findByUserName(username);
+        Users user = new Users();
+        try {
+            user = loginDao.findByUserName(username);
+        } catch (JAXBException ex) {
+            Logger.getLogger(LoginServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-		List<GrantedAuthority> authorities = buildUserAuthority(user
-				.getUserRole());
+        List<GrantedAuthority> authorities = null;
+        try {
+            authorities = buildUserAuthority(loginDao.getUserRole(username));
+        } catch (JAXBException ex) {
+            Logger.getLogger(LoginServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-		return buildUserForAuthentication(user, authorities);
-	}
+        return buildUserForAuthentication(user, authorities);
+    }
 
         // Converts com.mycompany.domain.login.Users user to
-	// org.springframework.security.core.userdetails.User
-	private User buildUserForAuthentication(Users user,
-			List<GrantedAuthority> authorities) {
-		return new User(user.getUsername(), user.getPassword(),
-				user.isEnabled(), true, true, true, authorities);
-	}
+    // org.springframework.security.core.userdetails.User
+    private User buildUserForAuthentication(Users user,
+            List<GrantedAuthority> authorities) {
+        return new User(user.getUsername(), user.getPassword(),
+                user.isEnabled(), true, true, true, authorities);
+    }
 
-	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
+    private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
 
-		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+        Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
-		// Build user's authorities
-		for (UserRole userRole : userRoles) {
-			setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
-		}
+        // Build user's authorities
+        for (UserRole userRole : userRoles) {
+            setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
+        }
 
-		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(
-				setAuths);
+        List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(
+                setAuths);
 
-		return Result;
-	}
+        return Result;
+    }
 
 }

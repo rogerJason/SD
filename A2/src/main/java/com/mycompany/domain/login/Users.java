@@ -3,31 +3,19 @@ package com.mycompany.domain.login;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name = "users", catalog = "springhibernate_db")
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Users {
 
-	@Id
-	@Column(name = "username", unique = true, nullable = false, length = 45)
 	private String username;
-
-	@Column(name = "password", nullable = false, length = 60)
 	private String password;
-
-	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 
-        // Value of mappedBy is name of the field that is owning side of bidirectional relationship. 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<>(0);
-
 	
 	public String getUsername() {
 		return username;
