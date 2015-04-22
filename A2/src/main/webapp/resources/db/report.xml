@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book>
+        <id>1</id>
+        <title>Godfather</title>
+        <author>Mario Puzo</author>
+        <genre>Thriller</genre>
+        <quantity>0</quantity>
+        <price>100.99</price>
+    </book>
+</books>

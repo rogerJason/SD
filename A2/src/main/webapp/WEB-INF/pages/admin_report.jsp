@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CB BookStore | Home Page</title>
+        <title>CB BookStore | Report</title>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css" media="all">
         <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" />
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.6.2.min.js" />"></script>
@@ -19,9 +19,9 @@
             <!-- Navigation -->
             <div id="navigation">
                 <ul>
-                    <li><a href="home" class="active">Home</a></li>
-                    <li><a href="user_books">Books</a></li>
-                    <li><a href="user_search">Search</a></li>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Promotions</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contacts</a></li>
@@ -138,25 +138,19 @@
                             <li><a href="#">Keri Smith</a></li>
                         </ul>
                     </li>
-
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li>
-                            <h4>Admin Panel</h4>
-                            <ul>
-                                <li><a href="admin_employee_list">Employees</a></li>
-                                <li><a href="admin_book_list">Books</a></li>    
-                                <li><a href="admin_report">Generate Report</a></li>
-                            </ul>
-                        </li>
-                    </sec:authorize>
                 </ul>
             </div>
             <!-- End Sidebar -->
             <!-- Content -->
             <div id="content">
-                
-            </div>
-                <div class="cl">&nbsp;</div>
+                <center>
+                    <div style="color: teal; font-size: 30px">CB BookStore | Generate Report</div>
+                    <br /> <br /> <br /> 
+                    <a href="admin_report_txt" style="font-size: 15px; ">Generate TXT Report</a>
+                    <br/><br/>
+                    <a href="admin_report_xml" style="font-size: 15px; ">Generate XML Report</a>
+                    <br />                   
+                </center>
             </div>
             <!-- End Content -->
             <div class="cl">&nbsp;</div>
