@@ -73,5 +73,13 @@ public class BookController {
         List bookList = bookService.searchBy(searchString);
         return new ModelAndView("user_search", "bookList", bookList);
     }
+    
+    @RequestMapping("user_sell")
+    public ModelAndView sellBook(@RequestParam int id) throws JAXBException{
+        Book book = bookService.getRowById(id);
+        book.setQuantity(book.getQuantity() - 1);
+        bookService.updateRow(book);
+        return new ModelAndView("redirect:user_books");
+    }
   
 }

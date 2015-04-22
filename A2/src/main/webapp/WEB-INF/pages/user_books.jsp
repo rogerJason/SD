@@ -160,9 +160,21 @@
                                                 <span class="description"><c:out value="${book.genre}" /></span>
                                             </span>
                                         </a>
-                                        <a href="#" class="buy-btn">SELL<span class="price">
+                                        <c:choose>
+                                            <c:when test="${book.quantity=='0'}">
+                                                <a href="#" class="sold-btn">SOLD
+                                                <br />
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <a href="user_sell?id=${book.id}" class="buy-btn">SELL
+                                                <br />
+                                            </c:otherwise>
+                                        </c:choose>
+                                                <span class="price">
                                                 <span class="low">$</span>${fn:substringBefore(book.price, ".")}
-                                                <span class="high">${fn:substringAfter(book.price, ".")}</span></span></a> 
+                                                <span class="high">${fn:substringAfter(book.price, ".")}</span>
+                                                </span></a> 
                                     </div>
                                 </li>
                             </c:forEach>

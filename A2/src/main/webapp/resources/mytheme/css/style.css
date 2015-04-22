@@ -93,6 +93,12 @@ textarea { overflow: auto; }
 .product .buy-btn .price .low { font-size: 14px; vertical-align: baseline; }
 .product .buy-btn .price .high { font-size: 11px; line-height: 14px; vertical-align: super; }
 
+.product .sold-btn { position: absolute; bottom: 8px; left: 7px; background: url(../images/sold-btn.png) repeat-x 0 0; width: 126px; height: 31px; color: #fff; font-size: 12px; line-height: 31px; text-transform: uppercase; font-weight: bold; z-index: 10; padding-left: 10px; white-space: nowrap;}
+.product .sold-btn:hover { text-decoration: none; }
+.product .sold-btn .price { padding: 0 7px; background: url(../images/price.png) repeat-x 0 0; font-size: 22px; line-height: 29px; position: absolute; top: 0; right: 0; height: 31px; }
+.product .sold-btn .price .low { font-size: 14px; vertical-align: baseline; }
+.product .sold-btn .price .high { font-size: 11px; line-height: 14px; vertical-align: super; }
+
 .product .book-name { font-size: 12px; line-height: 20px; color: #0182b5; font-family: 'Georgia', Arial, serif; display: block; }
 .product .author { font-size: 11px; line-height: 14px; color: #3d3d3d; font-family: 'Georgia', Arial, serif; padding: 0 0 9px 1px; display: block; }
 .product .description { font-size: 11px; line-height: 16px; color: #878787; }
