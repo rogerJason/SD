@@ -8,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
-<%-- <link href="<c:url value="/resources/css/login.css"/>" rel="stylesheet"> --%>
 <title>Login :: WebSockets</title>
 </head>
 <body>
