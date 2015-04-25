@@ -39,7 +39,7 @@ public class WebSocketsController {
     public String handleIndexPage(Model model, Locale locale) {
         LOG.info("Request for default / url processed at {}",
                 Util.getSimpleDate());
-        return "loginPage";
+        return "home";
     }
 
     /**
