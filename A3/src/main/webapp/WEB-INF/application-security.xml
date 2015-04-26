@@ -17,15 +17,15 @@
         <intercept-url pattern="/topic/simplemessages" access="permitAll" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/login" access="permitAll" />
-        <intercept-url pattern="/loginPage" access="permitAll" />
+        <intercept-url pattern="/home" access="permitAll" />
         <!-- Requests to secured pages need to be authenticated and authorized -->
         <intercept-url pattern="/secured/*"
                                access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
         <!-- Define the security form login and logout pages/urls -->
-        <form-login login-processing-url="/login" login-page="/loginPage"
+        <form-login login-processing-url="/login" login-page="/home"
                             username-parameter="username" password-parameter="password"
                             default-target-url="/secured/basicWebsockets"
-                            authentication-failure-url="/loginPage?auth=fail" />
+                            authentication-failure-url="/home?auth=fail#login" />
 
         <logout invalidate-session="true" logout-url="/logout"
                         logout-success-url="/logoutPage" />

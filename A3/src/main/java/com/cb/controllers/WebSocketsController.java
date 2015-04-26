@@ -35,7 +35,7 @@ public class WebSocketsController {
      * @param locale
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String handleIndexPage(Model model, Locale locale) {
         LOG.info("Request for default / url processed at {}",
                 Util.getSimpleDate());
@@ -53,20 +53,6 @@ public class WebSocketsController {
         LOG.info("Request for /logoutPage url processed at {}",
                 Util.getSimpleDate());
         return "logoutPage";
-    }
-
-    /**
-     * Method is executed when there is a call to the <code>/loginPage</code>
-     * url. On successful login, the user is re-directed to the
-     * <code>/secured/myPage</code> url.
-     *
-     * @return
-     */
-    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-    public String loginPage() {
-        LOG.info("Request for /loginPage url processed at {}",
-                Util.getSimpleDate());
-        return "loginPage";
     }
 
     /**
