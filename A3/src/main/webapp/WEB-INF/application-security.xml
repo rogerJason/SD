@@ -20,35 +20,25 @@
         <intercept-url pattern="/home" access="permitAll" />
         <!-- Requests to secured pages need to be authenticated and authorized -->
         <intercept-url pattern="/secured/*"
-                               access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+                       access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
         <!-- Define the security form login and logout pages/urls -->
         <form-login login-processing-url="/login" login-page="/home"
-                            username-parameter="username" password-parameter="password"
-                            default-target-url="/secured/basicWebsockets"
-                            authentication-failure-url="/home?auth=fail#login" />
+                    username-parameter="username" password-parameter="password"
+                    default-target-url="/secured/basicWebsockets"
+                    authentication-failure-url="/home?auth=fail#login" />
 
         <logout invalidate-session="true" logout-url="/logout"
-                        logout-success-url="/logoutPage" />
+                logout-success-url="/logoutPage" />
     </http>
 
-    <!-- Define some example users and admins who have role based access to 
-    the application. In a real world scenario this would be linked with a user 
-    credentials database or a custom authentication provider. Some examples: 
-    1) http://krams915.blogspot.in/2012/01/spring-security-31-implement_1244.html 
-    2) http://krams915.blogspot.in/2010/12/spring-security-mvc-integration-using_26.html -->
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="john" password="$2a$10$BIUa2y0Nsir0GP5mKqVp3OSLxSpuJ8PxRGpAnHMIrbnTUWNsHj05G" authorities="ROLE_USER" />
-                <user name="cb" password="$2a$10$BIUa2y0Nsir0GP5mKqVp3OSLxSpuJ8PxRGpAnHMIrbnTUWNsHj05G" authorities="ROLE_USER" />
-                <user name="admin" password="$2a$10$BN7VWURwOWH9d3YPd1MoBOIWHG/UYsEZllnEizGVzhrylvLQEVQTq" authorities="ROLE_USER,ROLE_ADMIN" />
-            </user-service>
-            <password-encoder ref="encoder" /> 
-        </authentication-provider>
-    </authentication-manager>
+    <authentication-manager>    
+        <authentication-provider user-service-ref="loginService">  
+            <password-encoder ref="encoder" />   
+        </authentication-provider>                  
+    </authentication-manager> 
         
     <beans:bean id="encoder"
-                    class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg value="12" />
     </beans:bean>
 
