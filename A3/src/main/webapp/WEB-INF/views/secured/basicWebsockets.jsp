@@ -60,10 +60,8 @@
                 <div class="col-sm-6">
                     <p>&nbsp;</p>
                     <!-- Connect and Disconnect buttons to establish/terminate a connection to the websocket service -->
-                    <div class="panel">
-                        <button id="connect" class="btn btn-success btn-sm">Connect</button>
-                        <button id="disconnect" class="btn btn-danger btn-sm">Disconnect</button>
-                    </div>
+                    <button id="connect" class="btn btn-info btn-sm">Connect</button>
+                    <button id="disconnect" class="btn btn-danger btn-sm">Disconnect</button>
                     <p />
                     <div class="panel panel-default">
                         <div class="panel-heading">Send Notification To Doctor</div>
@@ -84,7 +82,7 @@
                             <!-- Info alert -->
                             <div class="alert alert-info alert-dismissable" id="formInfoAlert">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <strong>Message Sent!</strong> <br />Your message has been sent to the server. You can continue to do other actions. Server response will be shown when it arrives.
+                                <strong>Message Sent!</strong> <br />Your message has been sent to the doctor. You can continue to do other actions. Confirmation will be shown when it arrives.
                             </div>
                             <!-- /Info alert -->
                             <!-- .input-group -->
@@ -268,7 +266,7 @@
             // an artificially introduced delay.
             function sendMessageToServer(messageForServer) {
                 //Show on the browser page that a message is being sent
-                showServerBroadcast("Your message '" + messageForServer + "' is being sent to the server.", true);
+                showServerBroadcast("Your message '" + messageForServer + "' is being sent to the doctor.", true);
                 // The message for the server must be in JSON format. Also refer SimpleMessage.java POJO.
                 stompClient.send("/app/simplemessages", {}, JSON.stringify({
                     'message': messageForServer

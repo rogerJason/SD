@@ -64,8 +64,8 @@ public class WebSocketBroadcastController {
         Thread.sleep(3000);
         LOG.info("Sending server side response '{}' for user: {}", message,
                 principal.getName());
-        return new MessageBroadcast("Server response: Did you send &lt;b&gt;'"
-                + message.getMessage() + "'&lt;/b&gt;? (Server Response at: "
+        return new MessageBroadcast("Server response: Message &lt;b&gt;'"
+                + message.getMessage() + "'&lt;/b&gt;! ("
                 + Util.getSimpleDate() + ")");
     }
 
