@@ -1,90 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-<!--  Bootstrap related -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Latest compiled and minified Bootstrap CSS -->
-<link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
-<title>WebSockets</title>
-<!-- WebSocket related javascript includes -->
-<script src="<c:url value="/resources/scripts/sockjs-0.3.4.min.js"/>"></script>
-<script src="<c:url value="/resources/scripts/stomp.js"/>"></script>
-</head>
-<body>
-  <noscript>
-    <h2 style="color: #ff0000">Seems your browser doesn't support Javascript! WebSocket relies on Javascript being enabled. Please enable Javascript and reload this page!</h2>
-  </noscript>
-  <c:url var="imageUrl" value="/resources/images/user01.png" />
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-10">
-        <!-- WebSocket related Twitter Bootstrap 3.0 based UI elements -->
-        <div id="heading" class="masthead">
-          <div class="pull-right">
-            Logged In: <strong>${username}</strong> | ${time } | <a href="${pageContext.request.contextPath}/logout">Logout&nbsp;<span class="glyphicon glyphicon-remove"></span></a>
-          </div>
-          <h3 class="muted">
-            <img src="${imageUrl}" />Welcome to WebSockets
-          </h3>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <p>&nbsp;</p>
-        <!-- Connect and Disconnect buttons to establish/terminate a connection to the websocket service -->
-        <div class="panel">
-          <button id="connect" class="btn btn-success btn-sm">Connect</button>
-          <button id="disconnect" class="btn btn-danger btn-sm">Disconnect</button>
-        </div>
-        <p />
-        <div class="panel panel-default">
-          <div class="panel-heading">Send Messages To WebSocket Server</div>
-          <div class="panel-body" id="conversationDiv">
-            <div class="input-group">
-              <input type="text" class="form-control" id="txtSendMessage" placeholder="Enter message"> <span class="input-group-btn">
-                <button id="sendMessage" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-share-alt"></span>&nbsp;Send
-                </button>
-              </span>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+        <!--  Bootstrap related -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified Bootstrap CSS -->
+        <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
+        <title>SecretaryDesk</title>
+        <!-- WebSocket related javascript includes -->
+        <script src="<c:url value="/resources/scripts/sockjs-0.3.4.min.js"/>"></script>
+        <script src="<c:url value="/resources/scripts/stomp.js"/>"></script>
+        <link rel="stylesheet" href="<c:url value="/resources/css/cb.css"/>">
+    </head>
+    <body>
+        <noscript>
+        <h2 style="color: #ff0000">Seems your browser doesn't support Javascript! WebSocket relies on Javascript being enabled. Please enable Javascript and reload this page!</h2>
+        </noscript>
+        <c:url var="imageUrl" value="/resources/images/user01.png" />
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/home">CB Clinic</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
-            <!-- Error alert -->
-            <div class="alert alert-danger alert-dismissable" id="formAlert">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <strong>Error!</strong> Message cannot be blank.
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10">
+                    <!-- WebSocket related Twitter Bootstrap 3.0 based UI elements -->
+                    <div id="heading" class="masthead">
+                        <div class="pull-right">
+                            Logged In: <strong>${username}</strong> | ${time } | <a href="${pageContext.request.contextPath}/logout">Logout&nbsp;<span class="glyphicon glyphicon-remove"></span></a>
+                        </div>
+                        <h3 class="muted">
+                            <img src="${imageUrl}" />Welcome to Secretary Desk
+                        </h3>
+                    </div>
+                </div>
             </div>
-            <!-- /Error alert -->
-            <!-- Info alert -->
-            <div class="alert alert-info alert-dismissable" id="formInfoAlert">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <strong>Message Sent!</strong> <br />Your message has been sent to the server. You can continue to do other actions. Server response will be shown when it arrives.
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>&nbsp;</p>
+                    <!-- Connect and Disconnect buttons to establish/terminate a connection to the websocket service -->
+                    <div class="panel">
+                        <button id="connect" class="btn btn-success btn-sm">Connect</button>
+                        <button id="disconnect" class="btn btn-danger btn-sm">Disconnect</button>
+                    </div>
+                    <p />
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Send Notification To Doctor</div>
+                        <div class="panel-body" id="conversationDiv">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="txtSendMessage" placeholder="Enter message"> <span class="input-group-btn">
+                                    <button id="sendMessage" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-share-alt"></span>&nbsp;Send
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- Error alert -->
+                            <div class="alert alert-danger alert-dismissable" id="formAlert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>Error!</strong> Message cannot be blank.
+                            </div>
+                            <!-- /Error alert -->
+                            <!-- Info alert -->
+                            <div class="alert alert-info alert-dismissable" id="formInfoAlert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>Message Sent!</strong> <br />Your message has been sent to the server. You can continue to do other actions. Server response will be shown when it arrives.
+                            </div>
+                            <!-- /Info alert -->
+                            <!-- .input-group -->
+                        </div>
+                        <!-- .panel-body -->
+                        <div class="panel-body" id="response"></div>
+                        <!-- Div to show the server responses -->
+                    </div>
+                    <!-- .panel -->
+                </div>
             </div>
-            <!-- /Info alert -->
-            <!-- .input-group -->
-          </div>
-          <!-- .panel-body -->
-          <div class="panel-body" id="response"></div>
-          <!-- Div to show the server responses -->
         </div>
-        <!-- .panel -->
-      </div>
-    </div>
-  </div>
-  <!-- .container -->
-  <!-- External Javascripts -->
-  <!-- Latest compiled and minified JQuery JavaScript (necessary for Bootstrap's JavaScript plugins). Placed at the end of the document so the pages load faster -->
-  <script src="<c:url value="/resources/scripts/jquery-1.10.2.min.js"/>"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="<c:url value="/resources/scripts/bootstrap/js/bootstrap.min.js"/>"></script>
-  <!-- Knockout data-binding MVVM library. More at http://knockoutjs.com/  -->
-  <script src="<c:url value="/resources/scripts/knockout-3.0.0.js"/>"></script>
-  <%-- URL for the STOMP end point for registering a stomp client--%>
-  <c:url value="/simplemessages" var="socketDest" />
-  <script type="text/javascript">
+        <!-- .container -->
+        <!-- External Javascripts -->
+        <!-- Latest compiled and minified JQuery JavaScript (necessary for Bootstrap's JavaScript plugins). Placed at the end of the document so the pages load faster -->
+        <script src="<c:url value="/resources/scripts/jquery-1.10.2.min.js"/>"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="<c:url value="/resources/scripts/bootstrap/js/bootstrap.min.js"/>"></script>
+        <!-- Knockout data-binding MVVM library. More at http://knockoutjs.com/  -->
+        <script src="<c:url value="/resources/scripts/knockout-3.0.0.js"/>"></script>
+        <%-- URL for the STOMP end point for registering a stomp client--%>
+        <c:url value="/simplemessages" var="socketDest" />
+        <script type="text/javascript">
             /***********************************************/
             /* PLEASE READ UP ON STOMP AND SOCKJS          */
             /* 1) http://jmesnil.net/stomp-websocket/doc/  */
@@ -95,11 +118,11 @@
             var stompClient = null;
 
             /************************************************************************** 
-            /*  JQUERY WAY OF BEING UNOBTRUSIVE AND ADDING EVENT HANDLERS TO WIDGETS, 
-            /*  THUS KEEPING HTML AND JAVASCRIPT SEPARATE 
-            /*************************************************************************/
+             /*  JQUERY WAY OF BEING UNOBTRUSIVE AND ADDING EVENT HANDLERS TO WIDGETS, 
+             /*  THUS KEEPING HTML AND JAVASCRIPT SEPARATE 
+             /*************************************************************************/
             // Runs this code only when the DOM (all elements) are ready
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // On page load the text input field 'MESSAGE', 'DISCONNECT' and 'SEND' buttons 
                 // should all be disabled as user has not clickedd 'CONNECT' button yet.
                 $("#disconnect").prop('disabled', true);
@@ -113,21 +136,21 @@
                 //Hide the validation and info alerts on page load
                 $(".alert").hide();
                 // Event handler: Connect button
-                $("#connect").on("click", function(e) {
+                $("#connect").on("click", function (e) {
                     // If alert is visible, hide it
                     $("#formAlert").slideUp(400);
                     connect();
                 });
 
                 // Event handler: Disconnect button 
-                $("#disconnect").on("click", function(e) {
+                $("#disconnect").on("click", function (e) {
                     // If alert is visible, hide it
                     $("#formAlert").slideUp(400);
                     disconnect();
                 });
                 // Event handler: X button on top right of info alert.
                 // Clicking the X button on top right will dismiss it from the screen and hide it
-                $(".alert").find(".close").on("click", function(e) {
+                $(".alert").find(".close").on("click", function (e) {
                     // Find all elements with the "alert" class, get all descendant elements 
                     // with the class "close", and bind a "click" event handler
 
@@ -146,7 +169,7 @@
                 });
 
                 // Event handler: Send button
-                $("#sendMessage").on("click", function(e) {
+                $("#sendMessage").on("click", function (e) {
 
                     // Find the input text element for the server message
                     var messageForServer = $("#txtSendMessage").val();
@@ -201,7 +224,7 @@
                 // Notice that we dont pass in username and password as Spring Security
                 // has already provided the server with the Principal object containing user credentials
                 // 2) The last argument is a callback function which is called when connection succeeds
-                stompClient.connect('', '', function(frame) {
+                stompClient.connect('', '', function (frame) {
                     //set the connect and disconnect button state. (disable connect button)
                     setConnected(true);
                     // In production code remove the next line
@@ -214,7 +237,7 @@
                     // the "/topic/simplemessagesresponse" destination where the server will echo the messages.
                     // When a broadcast message is received by the client on that destination, it will be shown by appending
                     // a paragraph to the DOM in the client browser.
-                    stompClient.subscribe("/topic/simplemessagesresponse", function(servermessage) {//Callback when server responds
+                    stompClient.subscribe("/topic/simplemessagesresponse", function (servermessage) {//Callback when server responds
                         showServerBroadcast(JSON.parse(servermessage.body).messageContent, false);
                         //Server responded so hide the info alert
                         $("#formInfoAlert").slideUp(400);
@@ -248,7 +271,7 @@
                 showServerBroadcast("Your message '" + messageForServer + "' is being sent to the server.", true);
                 // The message for the server must be in JSON format. Also refer SimpleMessage.java POJO.
                 stompClient.send("/app/simplemessages", {}, JSON.stringify({
-                    'message' : messageForServer
+                    'message': messageForServer
                 }));
             }
 
@@ -292,5 +315,5 @@
                 return n + " @ " + time;
             }
         </script>
-</body>
+    </body>
 </html>

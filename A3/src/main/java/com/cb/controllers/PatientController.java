@@ -26,7 +26,7 @@ public class PatientController {
 	@RequestMapping("user/patient/register")
 	public ModelAndView registerUser(@ModelAttribute Patient patient) {
 		patientService.insertRow(patient);
-		return new ModelAndView("redirect:user/patient/list");
+		return new ModelAndView("redirect:list");
 	}
 	
 	@RequestMapping("user/patient/list")
@@ -38,7 +38,7 @@ public class PatientController {
 	@RequestMapping("user/patient/delete")
 	public ModelAndView deleteClient(@RequestParam int id) {
 		patientService.deleteRow(id);
-		return new ModelAndView("redirect:user/patient/list");
+		return new ModelAndView("redirect:list");
 	}
 	
 	@RequestMapping("user/patient/edit")
@@ -50,7 +50,7 @@ public class PatientController {
 	@RequestMapping("user/patient/update")
 	public ModelAndView updateClient(@ModelAttribute Patient patient) {
 		patientService.updateRow(patient);
-		return new ModelAndView("redirect:user/patient/list");
+		return new ModelAndView("redirect:list");
 	}
 
 }

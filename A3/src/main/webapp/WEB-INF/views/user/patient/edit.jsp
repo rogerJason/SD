@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +16,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="CB">
-        <title>Patient List</title>
+        <title>Add Patient</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
@@ -46,50 +47,41 @@
         </nav>
 
         <div class="container">
-            <center>
-            <h2>Patients Details</h2>
-            <br />
-            <c:if test="${!empty patientList}">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Card Nr</th>
-                            <th>PNC</th>
-                            <th>Birthday</th>
-                            <th>Address</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <c:forEach items="${patientList}" var="patient">
-                        <tbody>
-                            <tr>
-                                <td><c:out value="${patient.lastName}" />
-                                </td>
-                                <td><c:out value="${patient.firstName}" />
-                                </td>
-                                <td><c:out value="${patient.idCardNr}" />
-                                </td>
-                                <td><c:out value="${patient.PNC}" />
-                                </td>
-                                <td><c:out value="${patient.dateOfBirth}" />
-                                </td>
-                                <td><c:out value="${patient.address}" />
-                                </td>
-
-                                <td><a href="${pageContext.request.contextPath}/user/patient/edit?id=${patient.id}">Edit</a></td>
-                                <td><a href="${pageContext.request.contextPath}/user/patient/delete?id=${patient.id}">Delete</a></td>
-                            </tr>
-                        </tbody>
-                    </c:forEach>
-                </table>
-            </c:if>
-
-            <br />
-            <h4><a href="${pageContext.request.contextPath}/user/patient/form">Add new Patient</a></h4>
-            </center>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h3>Edit Patient</h3>
+                <br />
+                <form:form id="registerForm" modelAttribute="patient" method="post"
+                           action="${pageContext.request.contextPath}/user/patient/update">
+                    
+                    <form:hidden path="id" value="${patientObject.id}" />
+                    <div class="form-group">
+                        <form:label path="lastName">Last Name</form:label>
+                        <form:input path="lastName" type="text" class="form-control" value="${patientObject.lastName}"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="firstName">First Name</form:label>
+                        <form:input path="firstName" type="text" class="form-control" value="${patientObject.firstName}"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="idCardNr">Identity Card Number</form:label>
+                        <form:input path="idCardNr" type="text" class="form-control" value="${patientObject.idCardNr}"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="PNC">Personal Numeric Code</form:label>
+                        <form:input path="PNC" type="text" class="form-control" value="${patientObject.PNC}"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="dateOfBirth">Date of Birth</form:label>
+                        <form:input path="dateOfBirth" type="text" class="form-control" value="${patientObject.dateOfBirth}"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="address">Address</form:label>
+                        <form:input path="address" type="text" class="form-control" value="${patientObject.address}"/>
+                    </div>
+                    <button type="submit" class="btn btn-default">Update</button>
+                </form:form>
+            </div>
 
         </div><!-- /.container -->
 
