@@ -9,6 +9,8 @@
 
     <!-- Get a basic Spring Security provided form based login infra -->
     <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/user/*" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/index" access="permitAll" />
         <intercept-url pattern="/index.jsp" access="permitAll" />
         <intercept-url pattern="/app/**" access="permitAll" />
@@ -22,7 +24,7 @@
         <intercept-url pattern="/secured/*"
                        access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
         <!-- Define the security form login and logout pages/urls -->
-        <form-login login-processing-url="/login" login-page="/home"
+        <form-login login-processing-url="/login" login-page="/home#login"
                     username-parameter="username" password-parameter="password"
                     default-target-url="/secured/basicWebsockets"
                     authentication-failure-url="/home?auth=fail#login" />
