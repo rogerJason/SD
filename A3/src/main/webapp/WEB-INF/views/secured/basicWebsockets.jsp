@@ -36,7 +36,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

@@ -16,7 +16,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="CB">
-        <title>Add Patient</title>
+        <title>Add Consultation</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
@@ -39,8 +39,8 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -51,32 +51,24 @@
             <div class="col-sm-4">
                 <h3>Registration Form</h3>
                 <br />
-                <form:form id="registerForm" modelAttribute="patient" method="post"
-                           action="${pageContext.request.contextPath}/user/patient/register">
+                <form:form id="registerForm" modelAttribute="consultation" method="post"
+                           action="${pageContext.request.contextPath}/user/consultation/register">
 
                     <div class="form-group">
-                        <form:label path="lastName">Last Name</form:label>
-                        <form:input path="lastName" type="text" class="form-control" placeholder="Hint:Doe"/>
+                        <form:label path="patientId">Patient Id</form:label>
+                        <form:input path="patientId" type="text" class="form-control" placeholder="Hint:"/>
                     </div>
                     <div class="form-group">
-                        <form:label path="firstName">First Name</form:label>
-                        <form:input path="firstName" type="text" class="form-control" placeholder="Hint:John"/>
+                        <form:label path="doctorId">Doctor Id</form:label>
+                        <form:input path="doctorId" type="text" class="form-control" placeholder="Hint:"/>
                     </div>
                     <div class="form-group">
-                        <form:label path="idCardNr">Identity Card Number</form:label>
-                        <form:input path="idCardNr" type="text" class="form-control" placeholder="Hint:CJ431023"/>
+                        <form:label path="fromDate">From</form:label>
+                        <form:input path="fromDate" type="text" class="form-control" placeholder="Hint:yyyy-mm-dd hh:mm:ss"/>
                     </div>
                     <div class="form-group">
-                        <form:label path="PNC">Personal Numeric Code</form:label>
-                        <form:input path="PNC" type="text" class="form-control" placeholder="Hint:1921224265421"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="dateOfBirth">Date of Birth</form:label>
-                        <form:input path="dateOfBirth" type="text" class="form-control" placeholder="Hint:yyyy-mm-dd"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="address">Address</form:label>
-                        <form:input path="address" type="text" class="form-control" placeholder="Hint:Prieteniei Street, Tg. Mures"/>
+                        <form:label path="toDate">To</form:label>
+                        <form:input path="toDate" type="text" class="form-control" placeholder="Hint:yyyy-mm-dd hh:mm:ss"/>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form:form>

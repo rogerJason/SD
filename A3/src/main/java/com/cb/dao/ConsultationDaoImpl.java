@@ -1,6 +1,5 @@
 package com.cb.dao;
 
-import com.cb.domain.Patient;
 import java.io.Serializable;
 import java.util.List;
 

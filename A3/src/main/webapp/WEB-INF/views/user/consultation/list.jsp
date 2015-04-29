@@ -15,7 +15,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="CB">
-        <title>Patient List</title>
+        <title>Consultations</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
@@ -38,8 +38,8 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -47,40 +47,40 @@
 
         <div class="container">
             <center>
-            <h2>Patients Details</h2>
+            <h2>Consultations</h2>
             <br />
-            <c:if test="${!empty patientList}">
+            <c:if test="${!empty consultationList}">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>Card Nr</th>
-                            <th>PNC</th>
-                            <th>Birthday</th>
-                            <th>Address</th>
+                            <th>Patient Id</th>
+                            <th>Patient</th>
+                            <th>Doctor Id</th>
+                            <th>Doctor</th>
+                            <th>From</th>
+                            <th>To</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${patientList}" var="patient">
+                    <c:forEach items="${consultationList}" var="consultation">
                         <tbody>
                             <tr>
-                                <td><c:out value="${patient.lastName}" />
+                                <td><c:out value="${consultation[0].patientId}" />
                                 </td>
-                                <td><c:out value="${patient.firstName}" />
+                                <td><c:out value="${consultation[1].lastName} ${consultation[1].firstName}" />
                                 </td>
-                                <td><c:out value="${patient.idCardNr}" />
+                                <td><c:out value="${consultation[0].doctorId}" />
                                 </td>
-                                <td><c:out value="${patient.PNC}" />
+                                <td><c:out value="${consultation[2].lastName} ${consultation[2].firstName}" />
                                 </td>
-                                <td><c:out value="${patient.dateOfBirth}" />
+                                <td><c:out value="${consultation[0].fromDate}" />
                                 </td>
-                                <td><c:out value="${patient.address}" />
+                                <td><c:out value="${consultation[0].toDate}" />
                                 </td>
 
-                                <td><a href="${pageContext.request.contextPath}/user/patient/edit?id=${patient.id}">Edit</a></td>
-                                <td><a href="${pageContext.request.contextPath}/user/patient/delete?id=${patient.id}">Delete</a></td>
+                                <td><a href="${pageContext.request.contextPath}/user/consultation/edit?id=${consultation[0].id}">Edit</a></td>
+                                <td><a href="${pageContext.request.contextPath}/user/consultation/delete?id=${consultation[0].id}">Delete</a></td>
                             </tr>
                         </tbody>
                     </c:forEach>
@@ -88,7 +88,7 @@
             </c:if>
 
             <br />
-            <h4><a href="${pageContext.request.contextPath}/user/patient/form">Add new Patient</a></h4>
+            <h4><a href="${pageContext.request.contextPath}/user/consultation/form">Add new Consultation</a></h4>
             </center>
 
         </div><!-- /.container -->

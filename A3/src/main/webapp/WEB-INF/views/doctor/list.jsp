@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +15,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="CB">
-        <title>Edit Consultation</title>
+        <title>Consultations</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
@@ -39,42 +38,49 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
-                        <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/doctor/list">Details</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
 
         <div class="container">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <h3>Edit Consultation</h3>
-                <br />
-                <form:form id="registerForm" modelAttribute="consultation" method="post"
-                           action="${pageContext.request.contextPath}/user/consultation/update">
-                    
-                    <form:hidden path="id" value="${consultationObject.id}" />
-                    <form:hidden path="details" value="${consultationObject.details}" />
-                    <div class="form-group">
-                        <form:label path="patientId">Patient Id</form:label>
-                        <form:input path="patientId" type="text" class="form-control" value="${consultationObject.patientId}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="doctorId">Doctor Id</form:label>
-                        <form:input path="doctorId" type="text" class="form-control" value="${consultationObject.doctorId}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="fromDate">From</form:label>
-                        <form:input path="fromDate" type="text" class="form-control" value="${consultationObject.fromDate}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="toDate">To</form:label>
-                        <form:input path="toDate" type="text" class="form-control" value="${consultationObject.toDate}"/>
-                    </div>
-                    <button type="submit" class="btn btn-default">Update</button>
-                </form:form>
-            </div>
+            <center>
+            <h2>Consultations</h2>
+            <br />
+            <c:if test="${!empty consultationList}">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Details</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <c:forEach items="${consultationList}" var="consultation">
+                        <tbody>
+                            <tr>
+                                <td><c:out value="${consultation[1].lastName} ${consultation[1].firstName}" />
+                                </td>
+                                <td><c:out value="${consultation[2].lastName} ${consultation[2].firstName}" />
+                                </td>
+                                <td><c:out value="${consultation[0].fromDate}" />
+                                </td>
+                                <td><c:out value="${consultation[0].toDate}" />
+                                </td>
+                                <td><c:out value="${consultation[0].details}" />
+                                </td>
+
+                                <td><a href="${pageContext.request.contextPath}/user/consultation/edit?id=${consultation[0].id}">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </c:forEach>
+                </table>
+            </c:if>
+            </center>
 
         </div><!-- /.container -->
 

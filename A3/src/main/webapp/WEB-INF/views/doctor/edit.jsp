@@ -16,7 +16,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="CB">
-        <title>Add Patient</title>
+        <title>Edit Consultation</title>
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
@@ -39,8 +39,8 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="${pageContext.request.contextPath}/secured/basicWebsockets">Home</a></li>
-                        <li class="active"><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
-                        <li><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/patient/list">Patients</a></li>
+                        <li class="active"><a href="${pageContext.request.contextPath}/user/consultation/list">Consultations</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -49,35 +49,20 @@
         <div class="container">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <h3>Edit Patient</h3>
+                <h3>Edit Consultation</h3>
                 <br />
-                <form:form id="registerForm" modelAttribute="patient" method="post"
-                           action="${pageContext.request.contextPath}/user/patient/update">
+                <form:form id="registerForm" modelAttribute="consultation" method="post"
+                           action="${pageContext.request.contextPath}/doctor/update">
                     
-                    <form:hidden path="id" value="${patientObject.id}" />
+                    <form:hidden path="id" value="${consultationObject.id}" />
+                    <form:hidden path="id" value="${consultationObject.patientId}" />
+                    <form:hidden path="id" value="${consultationObject.doctorId}" />
+                    <form:hidden path="id" value="${consultationObject.fromDate}" />
+                    <form:hidden path="id" value="${consultationObject.toDate}" />
+
                     <div class="form-group">
-                        <form:label path="lastName">Last Name</form:label>
-                        <form:input path="lastName" type="text" class="form-control" value="${patientObject.lastName}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="firstName">First Name</form:label>
-                        <form:input path="firstName" type="text" class="form-control" value="${patientObject.firstName}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="idCardNr">Identity Card Number</form:label>
-                        <form:input path="idCardNr" type="text" class="form-control" value="${patientObject.idCardNr}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="PNC">Personal Numeric Code</form:label>
-                        <form:input path="PNC" type="text" class="form-control" value="${patientObject.PNC}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="dateOfBirth">Date of Birth</form:label>
-                        <form:input path="dateOfBirth" type="text" class="form-control" value="${patientObject.dateOfBirth}"/>
-                    </div>
-                    <div class="form-group">
-                        <form:label path="address">Address</form:label>
-                        <form:input path="address" type="text" class="form-control" value="${patientObject.address}"/>
+                        <form:label path="details">Details</form:label>
+                        <form:input path="details" type="text" class="form-control" value="${consultationObject.details}"/>
                     </div>
                     <button type="submit" class="btn btn-default">Update</button>
                 </form:form>
