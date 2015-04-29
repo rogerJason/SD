@@ -80,13 +80,13 @@
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div>                       
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Submit</button> &nbsp;&nbsp;&nbsp;
+                    <a href="${pageContext.request.contextPath}/user/consultation/check" target="_blank" class="btn btn-info" role="button">Check Doctor</a>
                 </form:form>
             </div>
 
         </div><!-- /.container -->
-
-
+        
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.cb.dao.ConsultationDao;
 import com.cb.domain.Consultation;
+import com.cb.domain.Doctor;
+import java.sql.Timestamp;
 import org.springframework.stereotype.Service;
 
 @Configuration
@@ -42,5 +44,10 @@ public class ConsultationServiceImpl implements ConsultationService{
 	public int deleteRow(int id) {
 		return consultationDao.deleteRow(id);
 	}
+        
+        @Override
+        public List<Doctor> checkDoctor(Timestamp fromDate, Timestamp toDate) {
+            return consultationDao.checkDoctor(fromDate, toDate);
+        }
 
 }

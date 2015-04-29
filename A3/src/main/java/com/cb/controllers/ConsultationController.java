@@ -11,64 +11,72 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cb.domain.Consultation;
 import com.cb.services.ConsultationService;
+import java.sql.Timestamp;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class ConsultationController {
-	
-	@Autowired
-	ConsultationService consultationService;
 
-	@RequestMapping("user/consultation/form")
-	public ModelAndView getForm(@ModelAttribute Consultation consultation) {
-		return new ModelAndView("user/consultation/form");
-	}
-	
-	@RequestMapping("user/consultation/register")
-	public ModelAndView registerConsultation(@ModelAttribute Consultation consultation) {
-		consultationService.insertRow(consultation);
-		return new ModelAndView("redirect:list");
-	}
-	
-	@RequestMapping("user/consultation/list")
-	public ModelAndView getList() {
-		List<Object[]> consultationList = consultationService.getList();              
-		return new ModelAndView("user/consultation/list","consultationList",consultationList);
-	}
-        
-        @RequestMapping("doctor/list")
-	public ModelAndView getDetails() {
-		List<Object[]> consultationList = consultationService.getList();              
-		return new ModelAndView("doctor/list","consultationList",consultationList);
-	}
-	
-	@RequestMapping("user/consultation/delete")
-	public ModelAndView deleteConsultation(@RequestParam int id) {
-		consultationService.deleteRow(id);
-		return new ModelAndView("redirect:list");
-	}
-	
-	@RequestMapping("user/consultation/edit")
-	public ModelAndView editConsultation(@RequestParam int id,@ModelAttribute Consultation consultation) {
-		Consultation consultationObject = consultationService.getRowById(id);
-		return new ModelAndView("user/consultation/edit", "consultationObject", consultationObject);
-	}
-        
-        @RequestMapping("doctor/edit")
-	public ModelAndView editDetails(@RequestParam int id,@ModelAttribute Consultation consultation) {
-		Consultation consultationObject = consultationService.getRowById(id);
-		return new ModelAndView("doctor/edit", "consultationObject", consultationObject);
-	}
-        
-        @RequestMapping("doctor/update")
-	public ModelAndView updateDetails(@ModelAttribute Consultation consultation) {
-		consultationService.updateRow(consultation);
-		return new ModelAndView("redirect:list");
-	}
-	
-	@RequestMapping("user/consultation/update")
-	public ModelAndView updateConsultation(@ModelAttribute Consultation consultation) {
-		consultationService.updateRow(consultation);
-		return new ModelAndView("redirect:list");
-	}
+    @Autowired
+    ConsultationService consultationService;
+
+    @RequestMapping("user/consultation/form")
+    public ModelAndView getForm(@ModelAttribute Consultation consultation) {
+        return new ModelAndView("user/consultation/form");
+    }
+
+    @RequestMapping("user/consultation/register")
+    public ModelAndView registerConsultation(@ModelAttribute Consultation consultation) {
+        consultationService.insertRow(consultation);
+        return new ModelAndView("redirect:list");
+    }
+
+    @RequestMapping("user/consultation/list")
+    public ModelAndView getList() {
+        List<Object[]> consultationList = consultationService.getList();
+        return new ModelAndView("user/consultation/list", "consultationList", consultationList);
+    }
+
+    @RequestMapping("doctor/list")
+    public ModelAndView getDetails() {
+        List<Object[]> consultationList = consultationService.getList();
+        return new ModelAndView("doctor/list", "consultationList", consultationList);
+    }
+
+    @RequestMapping("user/consultation/delete")
+    public ModelAndView deleteConsultation(@RequestParam int id) {
+        consultationService.deleteRow(id);
+        return new ModelAndView("redirect:list");
+    }
+
+    @RequestMapping("user/consultation/edit")
+    public ModelAndView editConsultation(@RequestParam int id, @ModelAttribute Consultation consultation) {
+        Consultation consultationObject = consultationService.getRowById(id);
+        return new ModelAndView("user/consultation/edit", "consultationObject", consultationObject);
+    }
+
+    @RequestMapping("doctor/edit")
+    public ModelAndView editDetails(@RequestParam int id, @ModelAttribute Consultation consultation) {
+        Consultation consultationObject = consultationService.getRowById(id);
+        return new ModelAndView("doctor/edit", "consultationObject", consultationObject);
+    }
+
+    @RequestMapping("doctor/update")
+    public ModelAndView updateDetails(@ModelAttribute Consultation consultation) {
+        consultationService.updateRow(consultation);
+        return new ModelAndView("redirect:list");
+    }
+
+    @RequestMapping("user/consultation/update")
+    public ModelAndView updateConsultation(@ModelAttribute Consultation consultation) {
+        consultationService.updateRow(consultation);
+        return new ModelAndView("redirect:list");
+    }
+
+    @RequestMapping(value = "user/consultation/check", method = GET)
+    public ModelAndView checkDoctor(@RequestParam(required = false) Timestamp fromDate, @RequestParam(required = false) Timestamp toDate) {
+        List doctorList = consultationService.checkDoctor(fromDate, toDate);
+        return new ModelAndView("user/consultation/check", "doctorList", doctorList);
+    }
 
 }

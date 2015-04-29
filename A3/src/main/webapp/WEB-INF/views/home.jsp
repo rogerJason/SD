@@ -60,34 +60,34 @@
                 <div class="heading text-center"> 
                     <!-- Heading -->
                     <h2>Our Services</h2>
-                    <p>At lorem Ipsum available, but the majority have suffered alteration in some form by injected humour.</p>
+                    <p>Our mission is to greet every patient with care, to make sure that he is investigated and diagnosed correctly.</p>
                 </div>
                 <div class="row"> 
                     <!-- item -->
                     <div class="col-md-3 text-center c1"> <i class="fa fa-life-ring fa-2x circle"><!--  Some content --></i>
                         <h3><span class="id-color">Cardio Monitoring</span></h3>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet congue.</p>
+                        <p>The phrase cardiac monitoring generally refers to continuous monitoring of the heart activity.</p>
                     </div>
                     <!-- end: --> 
 
                     <!-- item -->
                     <div class="col-md-3 text-center c2"> <i class="fa fa-plus-square fa-2x circle"><!--  Some content --></i>
                         <h3><span class="id-color">Medical Treatment</span></h3>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet congue.</p>
+                        <p>The attempted remediation of a health problem, usually following a diagnosis.</p>
                     </div>
                     <!-- end: --> 
 
                     <!-- item -->
                     <div class="col-md-3 text-center c1"> <i class="fa fa-female fa-2x circle"><!--  Some content --></i>
                         <h3><span class="id-color">Women Care Help</span></h3>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer ultricies sed elit impe.</p>
+                        <p>Working with communities hit by natural disasters and war, CARE helps keep women safe.</p>
                     </div>
                     <!-- end: --> 
 
                     <!-- item -->
                     <div class="col-md-3 text-center c2"> <i class="fa fa-child fa-2x circle"><!--  Some content --></i>
                         <h3><span class="id-color">Child Care</span></h3>
-                        <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet conempus.</p>
+                        <p>Your gift will help women in your community choose life for their babies.</p>
                     </div>
                     <!-- end:--> 
                 </div>
@@ -99,15 +99,15 @@
                 <div class="heading text-center"> 
                     <!-- Heading -->
                     <h2>About Us</h2>
-                    <p>At lorem Ipsum available, but the majority have suffered alteration in some form by injected humour.</p>
+                    <p>At CB Clinic, we offer clinical and paraclinical integrated medical services.</p>
                 </div>
                 <div class="row feature design">
                     <div class="six columns right">
-                        <h3>Clean and Modern Design.</h3>
-                        <p>Lorem ipsum dolor sit amet, ea eum labitur scsstie percipitoleat fabulas complectitur deterruisset at pro. Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
-                            Nec et jority have suffered alteration. </p>
-                        <p>Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
-                            Nec et amet vidisse mentitumsstie percipitoleat fabulas. </p>
+                        <h3>Clean and Modern Clinic.</h3>
+                        <p>Our mission is to greet every patient with care, to make sure that he is investigated and 
+                            diagnosed correctly, that he is treated completely, in due time, with professionalism and with respect. </p>
+                        <p>Shortly, we wish to offer quality medical services. We believe that medicine without the help 
+                            of technique cannot be imagined, but that, without humaneness and respect for the moral values, it remains just a job. </p>
                     </div>
                     <div class="six columns feature-media left"> <img src="<c:url value="/resources/images/feature-img-1.png"/>" alt=""> </div>     
                 </div>
@@ -117,35 +117,35 @@
             <div class="container text-center">
                 <div class="heading">
                     <h2>Our Facilities</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, alias enim placeat earum quos ab.</p>
+                    <p>Founded and managed by four Romanian doctors, represents the materialization of their vision and experience.</p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div id="portfolio">
                             <ul class="items list-unstyled clearfix animated fadeInRight showing" data-animation="fadeInRight" style="position: relative; height: 438px;">
                                 <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> <a href="<c:url value="/resources/images/work/1.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/1.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Etiam porta</span> </div>
+                                        <div class="overlay"> <span>Clinic</span> </div>
                                     </a> </li>
                                 <li class="item photography" style="position: absolute; left: 292px; top: 0px;"> <a href="<c:url value="/resources/images/work/2.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/2.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Lorem ipsum</span> </div>
+                                        <div class="overlay"> <span>Patient</span> </div>
                                     </a> </li>
                                 <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> <a href="<c:url value="/resources/images/work/3.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/3.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Vivamus quis</span> </div>
+                                        <div class="overlay"> <span>Medical</span> </div>
                                     </a> </li>
                                 <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> <a href="<c:url value="/resources/images/work/4.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/4.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Donec ac tellus</span> </div>
+                                        <div class="overlay"> <span>Healthcare</span> </div>
                                     </a> </li>
                                 <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> <a href="<c:url value="/resources/images/work/5.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/5.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Etiam volutpat</span> </div>
+                                        <div class="overlay"> <span>Safe</span> </div>
                                     </a> </li>
                                 <li class="item web" style="position: absolute; left: 292px; top: 219px;"> <a href="<c:url value="/resources/images/work/6.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/6.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Donec congue </span> </div>
+                                        <div class="overlay"> <span>Clean</span> </div>
                                     </a> </li>
                                 <li class="item photography" style="position: absolute; left: 585px; top: 219px;"> <a href="<c:url value="/resources/images/work/7.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/7.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Nullam a ullamcorper diam</span> </div>
+                                        <div class="overlay"> <span>Heart</span> </div>
                                     </a> </li>
                                 <li class="item web" style="position: absolute; left: 877px; top: 219px;"> <a href="<c:url value="/resources/images/work/8.jpg"/>" class="fancybox"> <img src="<c:url value="/resources/images/work/8.jpg"/>" alt="">
-                                        <div class="overlay"> <span>Etiam consequat</span> </div>
+                                        <div class="overlay"> <span>Patient</span> </div>
                                     </a> </li>
                             </ul>
                         </div>
@@ -158,7 +158,7 @@
                 <div class="heading text-center"> 
                     <!-- Heading -->
                     <h2>Our Team</h2>
-                    <p>At variations of passages of Lorem Ipsum available, but the majority have suffered alteration..</p>
+                    <p>Starting from the principle "the patient has the right to be treated completely and correctly"</p>
                 </div>
                 <!-- Team Member's Details -->
                 <div class="team-content">
@@ -248,13 +248,13 @@
                         <div class="col-sm-4">
                             <h4>Address:</h4>
                             <address>
-                                WebThemez Company<br>
-                                134 Stilla. Tae., 414515<br>
-                                Leorislon, SA 02434-34534 USA <br>
+                                CB Clinic<br>
+                                Prieteniei Street, 543410<br>
+                                Targu Mures, Mures County<br>
                             </address>
                             <h4>Phone:</h4>
                             <address>
-                                12345-49589-2<br>
+                                0265 934 122<br>
                             </address>
                         </div>
                     </div>
