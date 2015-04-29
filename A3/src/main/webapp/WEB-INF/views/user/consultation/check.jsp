@@ -48,22 +48,34 @@
         <div class="container">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-
+                <h2>Check if doctor available</h2> <br/>
                 <form method="GET" action="${pageContext.request.contextPath}/user/consultation/check">
                     <input type="text" name="fromDate" style="font-size: 15px" value="yyyy-mm-dd hh:mm:ss"/>  
-                    <input type="text" name="toDate" style="font-size: 15px" value="yyyy-mm-dd hh:mm:ss"/>
-                    <input type="submit" value="Check" style="font-size: 15px"/>
+                    <br/><br/><input type="text" name="toDate" style="font-size: 15px" value="yyyy-mm-dd hh:mm:ss"/>
+                    <br/><br/><input type="submit" value="Check" class="btn btn-info"/>
                 </form>
 
-
+                    <br/><br/><br/>
                 <c:if test="${!empty doctorList}">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Last Name</th>
+                                <th>First Name</th>
 
-                    <c:forEach items="${doctorList}" var="doctor">
-                        <c:out value="${doctor.lastName}" />
-                        <br/>
-
-                    </c:forEach>
-
+                            </tr>
+                        </thead>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <tbody>
+                                <tr>
+                                    <td><c:out value="${doctor.lastName}" />
+                                    </td>
+                                    <td><c:out value="${doctor.firstName}" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </c:forEach>
+                    </table>
                 </c:if>
             </div>
 
