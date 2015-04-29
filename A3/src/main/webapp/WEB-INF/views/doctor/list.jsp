@@ -74,7 +74,7 @@
                                 <td><c:out value="${consultation[0].details}" />
                                 </td>
 
-                                <td><a href="${pageContext.request.contextPath}/user/consultation/edit?id=${consultation[0].id}">Edit</a></td>
+                                <td><a href="${pageContext.request.contextPath}/doctor/edit?id=${consultation[0].id}">Edit</a></td>
                             </tr>
                         </tbody>
                     </c:forEach>

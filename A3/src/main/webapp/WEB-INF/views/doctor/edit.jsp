@@ -55,10 +55,10 @@
                            action="${pageContext.request.contextPath}/doctor/update">
                     
                     <form:hidden path="id" value="${consultationObject.id}" />
-                    <form:hidden path="id" value="${consultationObject.patientId}" />
-                    <form:hidden path="id" value="${consultationObject.doctorId}" />
-                    <form:hidden path="id" value="${consultationObject.fromDate}" />
-                    <form:hidden path="id" value="${consultationObject.toDate}" />
+                    <form:hidden path="patientId" value="${consultationObject.patientId}" />
+                    <form:hidden path="doctorId" value="${consultationObject.doctorId}" />
+                    <form:hidden path="fromDate" value="${consultationObject.fromDate}" />
+                    <form:hidden path="toDate" value="${consultationObject.toDate}" />
 
                     <div class="form-group">
                         <form:label path="details">Details</form:label>

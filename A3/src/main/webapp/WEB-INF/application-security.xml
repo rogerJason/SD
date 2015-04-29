@@ -13,21 +13,15 @@
         <intercept-url pattern="/user/patient/*" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/user/consultation/*" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/doctor/*" access="hasRole('ROLE_DOC')" />
-        <intercept-url pattern="/index" access="permitAll" />
-        <intercept-url pattern="/app/**" access="permitAll" />
-        <intercept-url pattern="/simplemessages/**" access="permitAll" />
-        <intercept-url pattern="/topic/**" access="permitAll" />
-        <intercept-url pattern="/topic/simplemessages" access="permitAll" />
-        <intercept-url pattern="/resources/**" access="permitAll" />
-        <intercept-url pattern="/login" access="permitAll" />
-        <intercept-url pattern="/home" access="permitAll" />
         <!-- Requests to secured pages need to be authenticated and authorized -->
-        <intercept-url pattern="/secured/*"
-                       access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_DOC')" />
+        <intercept-url pattern="/secured/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_DOC')" />
+        
+        <!-- access denied page -->
+        <access-denied-handler error-page="/403" />
         <!-- Define the security form login and logout pages/urls -->
         <form-login login-processing-url="/login" login-page="/home#login"
                     username-parameter="username" password-parameter="password"
-                    default-target-url="/secured/basicWebsockets"
+                    default-target-url="/welcome"
                     authentication-failure-url="/home?auth=fail#login" />
 
         <logout invalidate-session="true" logout-url="/logout"

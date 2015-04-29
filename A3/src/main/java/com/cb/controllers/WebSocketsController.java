@@ -16,6 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cb.util.Util;
+import java.util.Set;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -43,6 +52,28 @@ public class WebSocketsController {
     }
 
     /**
+     * Used for redirecting the login page based on User Roles
+     * @return 
+     */
+    @RequestMapping(value = "/welcome")
+    protected View welcome() {
+
+        Set<String> roles = AuthorityUtils
+                .authorityListToSet(SecurityContextHolder.getContext()
+                        .getAuthentication().getAuthorities());
+        if (roles.contains("ROLE_ADMIN")) {
+            return new RedirectView("secured/basicWebsockets");
+        }
+        if (roles.contains("ROLE_USER")) {
+            return new RedirectView("user/patient/list");
+        }
+        if (roles.contains("ROLE_DOC")) {
+            return new RedirectView("doctor/list");
+        }
+        return new RedirectView("home");
+    }
+
+    /**
      * Method is executed when there is a call to the <code>/logoutPage</code>
      * url.
      *
@@ -53,6 +84,19 @@ public class WebSocketsController {
         LOG.info("Request for /logoutPage url processed at {}",
                 Util.getSimpleDate());
         return "logoutPage";
+    }
+
+    @RequestMapping("/403")
+    public ModelAndView getAccessDenied() {
+        Authentication auth = SecurityContextHolder.getContext()
+                .getAuthentication();
+        String username = "";
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            username = userDetail.getUsername();
+        }
+
+        return new ModelAndView("403", "username", username);
     }
 
     /**

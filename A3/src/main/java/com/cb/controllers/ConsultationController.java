@@ -1,6 +1,5 @@
 package com.cb.controllers;
 
-import com.cb.domain.Patient;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class ConsultationController {
 	}
         
         @RequestMapping("doctor/list")
-	public ModelAndView getDocList() {
+	public ModelAndView getDetails() {
 		List<Object[]> consultationList = consultationService.getList();              
 		return new ModelAndView("doctor/list","consultationList",consultationList);
 	}
@@ -55,13 +54,13 @@ public class ConsultationController {
 	}
         
         @RequestMapping("doctor/edit")
-	public ModelAndView editDocConsultation(@RequestParam int id,@ModelAttribute Consultation consultation) {
+	public ModelAndView editDetails(@RequestParam int id,@ModelAttribute Consultation consultation) {
 		Consultation consultationObject = consultationService.getRowById(id);
 		return new ModelAndView("doctor/edit", "consultationObject", consultationObject);
 	}
         
         @RequestMapping("doctor/update")
-	public ModelAndView updateDocConsultation(@ModelAttribute Consultation consultation) {
+	public ModelAndView updateDetails(@ModelAttribute Consultation consultation) {
 		consultationService.updateRow(consultation);
 		return new ModelAndView("redirect:list");
 	}
