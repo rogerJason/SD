@@ -5,6 +5,7 @@
  */
 package com.cb.controllers;
 
+import com.cb.services.login.LoginServiceImpl;
 import java.security.Principal;
 import java.util.Locale;
 
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cb.util.Util;
+import java.util.List;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -32,6 +35,9 @@ import org.springframework.web.servlet.view.RedirectView;
  */
 @Controller
 public class WebSocketsController {
+    
+    @Autowired
+    LoginServiceImpl loginService;
 
     private static final Logger LOG = LoggerFactory
             .getLogger(WebSocketsController.class);
@@ -62,7 +68,7 @@ public class WebSocketsController {
                 .authorityListToSet(SecurityContextHolder.getContext()
                         .getAuthentication().getAuthorities());
         if (roles.contains("ROLE_ADMIN")) {
-            return new RedirectView("secured/basicWebsockets");
+            return new RedirectView("admin/list");
         }
         if (roles.contains("ROLE_USER")) {
             return new RedirectView("user/patient/list");
@@ -129,6 +135,12 @@ public class WebSocketsController {
                 userName, formattedDate);
 
         return "secured/basicWebsockets";
+    }
+
+    @RequestMapping("admin/list")
+    public ModelAndView getList() {
+        List<Object[]> userAccountList = loginService.getList();
+        return new ModelAndView("admin/list", "userAccountList", userAccountList);
     }
 
 }
