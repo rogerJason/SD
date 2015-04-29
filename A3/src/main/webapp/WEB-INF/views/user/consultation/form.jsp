@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
         <!-- Custom styles for this template -->
         <link rel="stylesheet" href="<c:url value="/resources/css/cb.css"/>">
+        
+        <link rel="stylesheet" href="<c:url value="/resources/scripts/datetimepicker/bootstrap-datetimepicker.min.css"/>" media="screen">
     </head>
 
     <body>
@@ -64,11 +66,19 @@
                     </div>
                     <div class="form-group">
                         <form:label path="fromDate">From</form:label>
-                        <form:input path="fromDate" type="text" class="form-control" placeholder="Hint:yyyy-mm-dd hh:mm:ss"/>
+                        <div class="input-group date form_datetime" data-date="2015-04-01T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii:00">
+                            <form:input path="fromDate" type="text" class="form-control" value=""/>                           
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>                       
                     </div>
                     <div class="form-group">
                         <form:label path="toDate">To</form:label>
-                        <form:input path="toDate" type="text" class="form-control" placeholder="Hint:yyyy-mm-dd hh:mm:ss"/>
+                        <div class="input-group date form_datetime" data-date="2015-04-01T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii:00">
+                            <form:input path="toDate" type="text" class="form-control" value=""/>                           
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>                       
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form:form>
@@ -82,6 +92,18 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="<c:url value="/resources/scripts/js/jquery-1.8.2.min.js"/>" type="text/javascript"></script> 
         <script src="<c:url value="/resources/scripts/js/bootstrap.min.js"/>" type="text/javascript"></script>
+
+        <script src="<c:url value="/resources/scripts/datetimepicker/bootstrap-datetimepicker.js"/>" type="text/javascript" charset="UTF-8"></script>
+        <script type="text/javascript">
+            $('.form_datetime').datetimepicker({
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0
+            });
+        </script>
     </body>
 </html>
 
