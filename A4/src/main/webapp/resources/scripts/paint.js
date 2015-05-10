@@ -128,6 +128,65 @@
         tmp_ctx.closePath();
     };
 
+    var onPaintRect = function () {
+
+        // Tmp canvas is always cleared up before drawing.
+        tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+
+        var x = Math.min(mouse.x, start_mouse.x);
+        var y = Math.min(mouse.y, start_mouse.y);
+        var width = Math.abs(mouse.x - start_mouse.x);
+        var height = Math.abs(mouse.y - start_mouse.y);
+        tmp_ctx.strokeRect(x, y, width, height);
+    };
+
+    var onPaintCircle = function () {
+
+        // Tmp canvas is always cleared up before drawing.
+        tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+
+        var x = (mouse.x + start_mouse.x) / 2;
+        var y = (mouse.y + start_mouse.y) / 2;
+
+        var radius = Math.max(
+                Math.abs(mouse.x - start_mouse.x),
+                Math.abs(mouse.y - start_mouse.y)
+                ) / 2;
+
+        tmp_ctx.beginPath();
+        tmp_ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+        tmp_ctx.stroke();
+        tmp_ctx.closePath();
+    };
+
+    var onPaintEllipse = function () {
+
+        tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+
+        var x = Math.min(mouse.x, start_mouse.x);
+        var y = Math.min(mouse.y, start_mouse.y);
+
+        var w = Math.abs(mouse.x - start_mouse.x);
+        var h = Math.abs(mouse.y - start_mouse.y);
+
+        var kappa = .5522848;
+        ox = (w / 2) * kappa, // control point offset horizontal
+                oy = (h / 2) * kappa, // control point offset vertical
+                xe = x + w, // x-end
+                ye = y + h, // y-end
+                xm = x + w / 2, // x-middle
+                ym = y + h / 2;       // y-middle
+
+        tmp_ctx.beginPath();
+        tmp_ctx.moveTo(x, ym);
+        tmp_ctx.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+        tmp_ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+        tmp_ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+        tmp_ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+        tmp_ctx.closePath();
+        tmp_ctx.stroke();
+    };
+
     var onPaint = function () {
 
         if (tool == 'brush')
@@ -137,6 +196,18 @@
         else if (tool == 'line')
         {
             onPaintLine();
+        }
+        else if (tool == 'rectangle')
+        {
+            onPaintRect();
+        }
+        else if (tool == 'circle')
+        {
+            onPaintCircle();
+        }
+        else if (tool == 'ellipse')
+        {
+            onPaintEllipse();
         }
 
     };
