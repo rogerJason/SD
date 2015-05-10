@@ -7,6 +7,13 @@
     canvas.width = parseInt(sketch_style.getPropertyValue('width'));
     canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
+    var canvas_small = document.getElementById('brush_size');
+    var context_small = canvas_small.getContext('2d');
+    var centerX = canvas_small.width / 2;
+    var centerY = canvas_small.height / 2;
+    var radius;
+
+
     // Creating a tmp canvas
     var tmp_canvas = document.createElement('canvas');
     var tmp_ctx = tmp_canvas.getContext('2d');
@@ -39,6 +46,7 @@
     tmp_canvas.addEventListener('mousedown', function (e) {
         tmp_canvas.addEventListener('mousemove', onPaint, false);
 
+        // we use e.offsetX (chrome, opera) or e.layerX (firefox) to capture the mouse coordinates relative to the canvas
         mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
         mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
 
