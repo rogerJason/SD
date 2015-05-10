@@ -7,13 +7,6 @@
     canvas.width = parseInt(sketch_style.getPropertyValue('width'));
     canvas.height = parseInt(sketch_style.getPropertyValue('height'));
 
-    var canvas_small = document.getElementById('brush_size');
-    var context_small = canvas_small.getContext('2d');
-    var centerX = canvas_small.width / 2;
-    var centerY = canvas_small.height / 2;
-    var radius;
-
-
     // Creating a tmp canvas
     var tmp_canvas = document.createElement('canvas');
     var tmp_ctx = tmp_canvas.getContext('2d');
@@ -24,10 +17,21 @@
     sketch.appendChild(tmp_canvas);
 
     var mouse = {x: 0, y: 0};
+    var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
     var last_mouse = {x: 0, y: 0};
 
-    // Pencil Points
+    // Pencil Points - used for drawing smoother curved lines
     var ppts = [];
+
+    // ---------------------------------- SELECTING THE CURRENT TOOL FOR DRAWING ---------------------------------
+    // current tool
+    var tool = 'brush';
+
+    $('#tools button').on('click', function () {
+        tool = $(this).attr('id');
+        console.log(tool);
+    })
+    // -----------------------------------------------------------------------------------------------------------
 
     /* Mouse Capturing Work */
     tmp_canvas.addEventListener('mousemove', function (e) {
@@ -50,6 +54,10 @@
         mouse.x = typeof e.offsetX !== 'undefined' ? e.offsetX : e.layerX;
         mouse.y = typeof e.offsetY !== 'undefined' ? e.offsetY : e.layerY;
 
+        // save the start x/y positions of the mouse to know where to start drawing the line
+        start_mouse.x = mouse.x;
+        start_mouse.y = mouse.y;
+
         ppts.push({x: mouse.x, y: mouse.y});
 
         onPaint();
@@ -67,7 +75,7 @@
         ppts = [];
     }, false);
 
-    var onPaint = function () {
+    var onPaintBrush = function () {
 
         // Saving all the points in an array
         ppts.push({x: mouse.x, y: mouse.y});
@@ -107,5 +115,32 @@
         tmp_ctx.stroke();
 
     };
+
+    var onPaintLine = function () {
+
+        // Tmp canvas is always cleared up before drawing.
+        tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+
+        tmp_ctx.beginPath();
+        tmp_ctx.moveTo(start_mouse.x, start_mouse.y);
+        tmp_ctx.lineTo(mouse.x, mouse.y);
+        tmp_ctx.stroke();
+        tmp_ctx.closePath();
+    };
+
+    var onPaint = function () {
+
+        if (tool == 'brush')
+        {
+            onPaintBrush();
+        }
+        else if (tool == 'line')
+        {
+            onPaintLine();
+        }
+
+    };
+
+
 
 }());
