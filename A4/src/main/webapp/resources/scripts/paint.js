@@ -29,8 +29,16 @@
 
     $('#tools button').on('click', function () {
         tool = $(this).attr('id');
-        console.log(tool);
-    })
+        console.log(tool);  // it is used for debugging, press F12 in Chrome and select Console
+    });
+    // -----------------------------------------------------------------------------------------------------------
+
+    // ---------------------------------- SELECTING THE CURRENT COLOR FOR DRAWING ---------------------------------
+    $('#colors button').on('click', function () {
+        tmp_ctx.strokeStyle = $(this).attr('id');
+        tmp_ctx.fillStyle = tmp_ctx.strokeStyle;
+        console.log(tmp_ctx.strokeStyle);
+    });
     // -----------------------------------------------------------------------------------------------------------
 
     /* Mouse Capturing Work */
@@ -233,27 +241,27 @@
 
     var onPaint = function () {
 
-        if (tool == 'brush')
+        if (tool === 'brush')
         {
             onPaintBrush();
         }
-        else if (tool == 'line')
+        else if (tool === 'line')
         {
             onPaintLine();
         }
-        else if (tool == 'rectangle')
+        else if (tool === 'rectangle')
         {
             onPaintRect();
         }
-        else if (tool == 'circle')
+        else if (tool === 'circle')
         {
             onPaintCircle();
         }
-        else if (tool == 'ellipse')
+        else if (tool === 'ellipse')
         {
             onPaintEllipse();
         }
-        else if (tool == 'eraser')
+        else if (tool === 'eraser')
         {
             onErase();
         }

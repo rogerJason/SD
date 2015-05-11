@@ -33,7 +33,7 @@
                 <button  class="yellow" id = '#FFFF00'> </button>
                 <button  class="green" id = '#008000'> </button>
                 <button  class="purple" id = '#800080'> </button>
-                
+
                 <input type="hidden" id="color_value_form">	
             </span>
 
@@ -50,11 +50,39 @@
                 <button  id="id_download">Download</button> 
                 <button  id="clear">Clear All</button>
             </div>  
-            
+
         </div>
 
 
         <script src="<c:url value="/resources/scripts/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/scripts/paint.js"/>"></script>
+        <script src="<c:url value="/resources/scripts/fabric.min.js"/>"></script>
+
+        <script>
+            // Place script tags at the bottom of the page.
+            // That way progressive page rendering and 
+            // downloads are not blocked.
+
+            // Run only when HTML is loaded and 
+            // DOM properly initialized (courtesy jquery)
+            $(function () {
+
+                // Obtain a canvas drawing surface from fabric.js
+                var canvas = new fabric.Canvas('paint');
+
+                // Create a text object. 
+                // Does not display it-the canvas doesn't 
+                // know about it yet.
+                var hi = new fabric.Text('hello, world.', {
+                    left: canvas.getWidth() / 2,
+                    top: canvas.getHeight() / 2
+                });
+
+                // Attach it to the canvas object, then (re)display
+                // the canvas.	
+                canvas.add(hi);
+
+            });
+        </script>
     </body>
 </html>
