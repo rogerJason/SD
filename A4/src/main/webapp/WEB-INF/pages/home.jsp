@@ -43,8 +43,8 @@
 
             <div id="functions">
                 <canvas id="brush_size" width="50" height="50"></canvas>
-                Brush Size<input type="range"  id="width_range" value="10">
-                Opacity  <input type="range"  id="opacity_range" value="100">
+                Brush Size<input id="width_range" type="range" min="1" max="51" step="5" value="1">
+                Opacity  <input id="opacity_range" type="range" min="0.0" max="1.0" step="0.1" value="1.0">
                 <button  id="undo">Undo</button> 
                 <button  id="redo">Redo</button>
                 <button  id="id_download">Download</button> 

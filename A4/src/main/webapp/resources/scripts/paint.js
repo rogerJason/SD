@@ -49,11 +49,23 @@
 
 
     /* Drawing on Paint App */
-    tmp_ctx.lineWidth = 5;
+    tmp_ctx.lineWidth = document.getElementById("width_range").value;
     tmp_ctx.lineJoin = 'round';
     tmp_ctx.lineCap = 'round';
     tmp_ctx.strokeStyle = 'blue';
     tmp_ctx.fillStyle = 'blue';
+
+    // ---------------------------------- SELECTING THE LINE WIDTH FOR DRAWING ---------------------------------
+    document.getElementById("width_range").addEventListener("change", function () {
+        tmp_ctx.lineWidth = document.getElementById("width_range").value;
+    });
+    // -----------------------------------------------------------------------------------------------------------
+
+    // ---------------------------------- SELECTING THE OPACITY FOR DRAWING ---------------------------------
+    document.getElementById("opacity_range").addEventListener("change", function () {
+        tmp_ctx.globalAlpha = document.getElementById("opacity_range").value;
+    });
+    // -----------------------------------------------------------------------------------------------------------
 
     tmp_canvas.addEventListener('mousedown', function (e) {
         tmp_canvas.addEventListener('mousemove', onPaint, false);
