@@ -5,24 +5,28 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     // Obtain a canvas drawing surface from fabric.js
     var canvas = new fabric.Canvas('paint');
 
+    fabric.Object.prototype.selectable = false;
+
     // Set the height and width of the canvas from CSS
     var sketch = document.querySelector('#sketch');
     var sketch_style = getComputedStyle(sketch);
     canvas.setWidth(parseInt(sketch_style.getPropertyValue('width')));
     canvas.setHeight(parseInt(sketch_style.getPropertyValue('height')));
 
+    var mouse = {x: 0, y: 0};
+    var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
+
     // ---------------------------------- SELECTING THE CURRENT TOOL FOR DRAWING ---------------------------------
     // current tool
-    var tool = 'eraser';
+    var tool = 'brush';
+    canvas.isDrawingMode = true;
 
     $('#tools button').on('click', function () {
         tool = $(this).attr('id');
-        canvas.isDrawingMode = false;
-        canvas.selection = false;
-        canvas.off('mouse:down');
-        canvas.off('mouse:move');
-        canvas.off('mouse:up'); // reset the mouse events
-        drawFigure();   // each figure has its own set of mouse events
+        if (tool === 'brush')
+            canvas.isDrawingMode = true;
+        else
+            canvas.isDrawingMode = false;
         console.log(tool);  // it is used for debugging, press F12 in Chrome and select Console
     });
     // -----------------------------------------------------------------------------------------------------------
@@ -35,8 +39,30 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     });
     // -----------------------------------------------------------------------------------------------------------
 
-    var drawBrush = function () {
-        canvas.isDrawingMode = true;
+    /* Get the mouse coordinates while moving mouse */
+    canvas.on('mouse:move', function (options) {
+        mouse.x = options.e.offsetX;
+        mouse.y = options.e.offsetY;
+        //console.log(mouse.x, mouse.y);
+    });
+
+    canvas.on('mouse:down', function (options) {
+
+        mouse.x = options.e.offsetX;
+        mouse.y = options.e.offsetY;
+
+        // save the start x/y positions of the mouse to know where to start drawing the line
+        start_mouse.x = mouse.x;
+        start_mouse.y = mouse.y;
+
+    });
+
+    canvas.on('mouse:up', function (options) {
+        onPaint();
+    });
+
+    var onPaintBrush = function () {
+
         // ---------------------------------- SELECTING THE CURRENT COLOR FOR DRAWING ---------------------------------
 
         document.getElementById("drawing_color").addEventListener("change", function () {
@@ -49,59 +75,50 @@ $.getScript("resources/scripts/fabric.min.js", function () {
             canvas.freeDrawingBrush.width = parseInt(document.getElementById("width_range").value);
         });
         // -----------------------------------------------------------------------------------------------------------
+
     };
 
-    var drawRect = function () {
-        var rect, isDown, origX, origY;
+    var onPaintRect = function () {
 
-        canvas.on('mouse:down', function (o) {
-            isDown = true;
-            var pointer = canvas.getPointer(o.e);
-            origX = pointer.x;
-            origY = pointer.y;
-            var pointer = canvas.getPointer(o.e);
-            rect = new fabric.Rect({
-                left: origX,
-                top: origY,
-                originX: 'left',
-                originY: 'top',
-                width: pointer.x - origX,
-                height: pointer.y - origY,
-                angle: 0,
-                fill: 'rgba(255,0,0,0.5)',
-                transparentCorners: false
-            });
-            canvas.add(rect);
+        var x = Math.min(mouse.x, start_mouse.x);
+        var y = Math.min(mouse.y, start_mouse.y);
+        var width = Math.abs(mouse.x - start_mouse.x);
+        var height = Math.abs(mouse.y - start_mouse.y);
+        // create a rectangle object
+        var rect = new fabric.Rect({
+            left: x,
+            top: y,
+            fill: 'red',
+            width: width,
+            height: height
         });
 
-        canvas.on('mouse:move', function (o) {
-            if (!isDown)
-                return;
-            var pointer = canvas.getPointer(o.e);
-
-            if (origX > pointer.x) {
-                rect.set({left: Math.abs(pointer.x)});
-            }
-            if (origY > pointer.y) {
-                rect.set({top: Math.abs(pointer.y)});
-            }
-
-            rect.set({width: Math.abs(origX - pointer.x)});
-            rect.set({height: Math.abs(origY - pointer.y)});
-
-            canvas.renderAll();
-        });
-
-        canvas.on('mouse:up', function (o) {
-            isDown = false;
-        });
+        // "add" rectangle onto canvas
+        canvas.add(rect);
     };
 
-    var drawFigure = function () {
+    var onPaintCircle = function () {
 
+        var x = Math.min(mouse.x, start_mouse.x);
+        var y = Math.min(mouse.y, start_mouse.y);
+        var width = Math.abs(mouse.x - start_mouse.x);
+        var height = Math.abs(mouse.y - start_mouse.y);
+
+        var radius = Math.max(
+                Math.abs(mouse.x - start_mouse.x),
+                Math.abs(mouse.y - start_mouse.y)
+                ) / 2;
+
+        var circle = new fabric.Circle({
+            radius: radius, fill: 'green', left: x, top: y
+        });
+        canvas.add(circle);
+    };
+
+    var onPaint = function () {
         if (tool === 'brush')
         {
-            drawBrush();
+            onPaintBrush();
         }
         else if (tool === 'circle')
         {
@@ -113,7 +130,7 @@ $.getScript("resources/scripts/fabric.min.js", function () {
         }
         else if (tool === 'rectangle')
         {
-            drawRect();
+            onPaintRect();
         }
         else if (tool === 'ellipse')
         {
