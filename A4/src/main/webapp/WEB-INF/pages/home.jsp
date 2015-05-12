@@ -25,17 +25,14 @@
                 <button  id="eraser">  Eraser</button>
             </span>
 
-            <span id="colors" >	
-                <button  class="black" id="#000000"> </button>
-                <button  class="white" id = '#FFFFFF'> </button>
-                <button  class="blue" id = '#0000FF'> </button>
-                <button  class="red" id = '#FF0000'> </button>
-                <button  class="yellow" id = '#FFFF00'> </button>
-                <button  class="green" id = '#008000'> </button>
-                <button  class="purple" id = '#800080'> </button>
+            <label for="drawing_color">Line color:</label>
+            <input id="drawing_color" type="color" value="#000000">
 
-                <input type="hidden" id="color_value_form">	
+            <span id="mode">
+                <button  id="draw">Draw</button>
+                <button  id="select" >Select</button>
             </span>
+
 
             <div id="sketch">
                 <canvas  id="paint"></canvas>
@@ -44,11 +41,10 @@
             <div id="functions">
                 <canvas id="brush_size" width="50" height="50"></canvas>
                 Brush Size<input id="width_range" type="range" min="1" max="51" step="5" value="1">
-                Opacity  <input id="opacity_range" type="range" min="0.0" max="1.0" step="0.1" value="1.0">
                 <button  id="undo">Undo</button> 
                 <button  id="redo">Redo</button>
                 <button  id="id_download">Download</button> 
-                <button  id="clear">Clear All</button>
+                <button  id="clear">Clear</button>
             </div>  
 
         </div>
@@ -56,33 +52,5 @@
 
         <script src="<c:url value="/resources/scripts/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/scripts/paint.js"/>"></script>
-        <script src="<c:url value="/resources/scripts/fabric.min.js"/>"></script>
-
-        <script>
-            // Place script tags at the bottom of the page.
-            // That way progressive page rendering and 
-            // downloads are not blocked.
-
-            // Run only when HTML is loaded and 
-            // DOM properly initialized (courtesy jquery)
-            $(function () {
-
-                // Obtain a canvas drawing surface from fabric.js
-                var canvas = new fabric.Canvas('paint');
-
-                // Create a text object. 
-                // Does not display it-the canvas doesn't 
-                // know about it yet.
-                var hi = new fabric.Text('hello, world.', {
-                    left: canvas.getWidth() / 2,
-                    top: canvas.getHeight() / 2
-                });
-
-                // Attach it to the canvas object, then (re)display
-                // the canvas.	
-                canvas.add(hi);
-
-            });
-        </script>
     </body>
 </html>
