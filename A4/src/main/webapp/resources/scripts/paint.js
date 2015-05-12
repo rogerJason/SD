@@ -166,4 +166,19 @@ $.getScript("resources/scripts/fabric.min.js", function () {
         }
     };
 
+    // ---------------------------------- JSON DE/SERIALIZATION ----------------------------------------------------
+    $("#save").click(function (event) {
+        this.href = 'data:plain/text,' + JSON.stringify(canvas);
+    });
+
+    $("#load").change(function (event) {
+        var fr = new FileReader();
+        fr.onload = function () {
+            canvas.loadFromJSON(this.result, canvas.renderAll.bind(canvas));
+        };
+        fr.readAsText(this.files[0]);
+    });
+    // -----------------------------------------------------------------------------------------------------------
+
+
 });

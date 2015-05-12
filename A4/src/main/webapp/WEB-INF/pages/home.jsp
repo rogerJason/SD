@@ -41,10 +41,12 @@
             <div id="functions">
                 <canvas id="brush_size" width="50" height="50"></canvas>
                 Brush Size<input id="width_range" type="range" min="1" max="51" step="5" value="1">
-                <button  id="undo">Undo</button> 
-                <button  id="redo">Redo</button>
-                <button  id="id_download">Download</button> 
-                <button  id="clear">Clear</button>
+                <button id="undo">Undo</button> 
+                <button id="redo">Redo</button>
+                <button id="id_download">Download</button> 
+                <button id="clear">Clear</button>
+                <a href="#" id="save" download="data.json">Save Canvas</a>
+                Load Canvas<input type="file" id="load" />
             </div>  
 
         </div>
