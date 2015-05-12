@@ -9,28 +9,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>CB Paint | Home</title>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="<c:url value="/resources/scripts/bootstrap/css/bootstrap.min.css"/>">
+        <!-- Custom styles for this page -->
         <link rel="stylesheet" href="<c:url value="/resources/css/paint.css"/>">
     </head>
     <body>
-        <div id="content" >
+        <div id="content" class="container"> 
             <span id="tools">
-                <button  id="brush">Brush</button>
-                <button  id="circle" >Circle</button>
-                <button  id="line">Line</button>
-                <button  id="rectangle">Rectangle</button>
-                <button  id="ellipse">Ellipse</button>   
-                <button  id="spray">Spray</button>
-                <button  id="eraser">  Eraser</button>
+                <button id="brush" class="btn btn-primary"><span title="Brush" class="glyphicon glyphicon-pencil"></span></button>
+                <button id="circle" class="btn btn-success"><span title="Circle" class="glyphicon glyphicon-dashboard"></span></button>
+                <button id="rectangle" class="btn btn-info"><span title="Rectangle" class="glyphicon glyphicon-stop"></span></button>
+                <button id="line" class="btn btn-warning"><span title="Line" class="glyphicon glyphicon-option-vertical"></span></button>               
+                <button id="ellipse" class="btn btn-danger"><span title="Ellipse" class="glyphicon glyphicon-eye-open"></span></button>  
+                <button id="spray" class="btn btn-primary"><span title="Spray" class="glyphicon glyphicon-certificate"></span></button>
+                <button id="eraser" class="btn btn-success"><span title="Eraser" class="glyphicon glyphicon-erase"></span></button>
             </span>
-
+            
             <label for="drawing_color">Line color:</label>
             <input id="drawing_color" type="color" value="#000000">
 
             <span id="mode">
-                <button  id="draw">Draw</button>
-                <button  id="select" >Select</button>
+                <button id="draw" class="btn btn-info"><span title="Draw" class="glyphicon glyphicon-edit"></span></button>
+                <button id="select" class="btn btn-warning"><span title="Select" class="glyphicon glyphicon-hand-up "></span></button>
             </span>
 
 
@@ -53,6 +56,7 @@
 
 
         <script src="<c:url value="/resources/scripts/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/scripts/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/scripts/paint.js"/>"></script>
     </body>
 </html>
