@@ -5,7 +5,7 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     // Obtain a canvas drawing surface from fabric.js
     var canvas = new fabric.Canvas('paint');
 
-    fabric.Object.prototype.selectable = false;
+    //fabric.Object.prototype.selectable = false;
 
     // Set the height and width of the canvas from CSS
     var sketch = document.querySelector('#sketch');
@@ -15,15 +15,32 @@ $.getScript("resources/scripts/fabric.min.js", function () {
 
     var mouse = {x: 0, y: 0};
     var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
+    
+    // ---------------------------------- SELECTING THE MODE FOR DRAWING ---------------------------------
+    // current mode
+    var mode = 'draw';
+
+    $('#mode button').on('click', function () {
+        mode = $(this).attr('id');
+        if (mode === 'draw')
+        {
+            fabric.Object.prototype.selectable = false;
+            if (tool === 'brush') canvas.isDrawingMode = true;
+        } else {
+            fabric.Object.prototype.selectable = true;
+            canvas.isDrawingMode = false;
+        }
+    });
+    // -----------------------------------------------------------------------------------------------------------
 
     // ---------------------------------- SELECTING THE CURRENT TOOL FOR DRAWING ---------------------------------
     // current tool
     var tool = 'brush';
     canvas.isDrawingMode = true;
-
+    
     $('#tools button').on('click', function () {
         tool = $(this).attr('id');
-        if (tool === 'brush')
+        if (tool === 'brush' && mode === 'draw')
             canvas.isDrawingMode = true;
         else
             canvas.isDrawingMode = false;
@@ -116,33 +133,36 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     };
 
     var onPaint = function () {
-        if (tool === 'brush')
+        if (mode === 'draw')
         {
-            onPaintBrush();
-        }
-        else if (tool === 'circle')
-        {
-            onPaintCircle();
-        }
-        else if (tool === 'line')
-        {
-            onPaintLine();
-        }
-        else if (tool === 'rectangle')
-        {
-            onPaintRect();
-        }
-        else if (tool === 'ellipse')
-        {
-            drawEllipse(tmp_ctx);
-        }
-        else if (tool === 'eraser')
-        {
-            onErase();
-        }
-        else if (tool === 'spray')
-        {
-            generateSprayParticles();
+            if (tool === 'brush')
+            {
+                onPaintBrush();
+            }
+            else if (tool === 'circle')
+            {
+                onPaintCircle();
+            }
+            else if (tool === 'line')
+            {
+                onPaintLine();
+            }
+            else if (tool === 'rectangle')
+            {
+                onPaintRect();
+            }
+            else if (tool === 'ellipse')
+            {
+                drawEllipse(tmp_ctx);
+            }
+            else if (tool === 'eraser')
+            {
+                onErase();
+            }
+            else if (tool === 'spray')
+            {
+                generateSprayParticles();
+            }
         }
     };
 
