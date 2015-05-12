@@ -1,6 +1,4 @@
-#sketch {
-    border: 5px solid gray;
-    height: 500px;
-	width: 100%;
-    position: relative;
+canvas { 
+  width: 100%;
+  height: auto;
 }

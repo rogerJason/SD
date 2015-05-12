@@ -3,15 +3,7 @@
 $.getScript("resources/scripts/fabric.min.js", function () {
 
     // Obtain a canvas drawing surface from fabric.js
-    var canvas = new fabric.Canvas('paint');
-
-    //fabric.Object.prototype.selectable = false;
-
-    // Set the height and width of the canvas from CSS
-    var sketch = document.querySelector('#sketch');
-    var sketch_style = getComputedStyle(sketch);
-    canvas.setWidth(parseInt(sketch_style.getPropertyValue('width')));
-    canvas.setHeight(parseInt(sketch_style.getPropertyValue('height')));
+    var canvas = new fabric.Canvas('canvas');
 
     var mouse = {x: 0, y: 0};
     var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
