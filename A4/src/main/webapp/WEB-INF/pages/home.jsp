@@ -25,8 +25,8 @@
                         <button id="circle" class="btn btn-success"><span title="Circle" class="glyphicon glyphicon-dashboard"></span></button>
                         <button id="rectangle" class="btn btn-info"><span title="Rectangle" class="glyphicon glyphicon-stop"></span></button>
                         <button id="line" class="btn btn-warning"><span title="Line" class="glyphicon glyphicon-option-vertical"></span></button>               
-                        <button id="ellipse" class="btn btn-danger"><span title="Ellipse" class="glyphicon glyphicon-eye-open"></span></button>  
-                        <button id="spray" class="btn btn-primary"><span title="Spray" class="glyphicon glyphicon-certificate"></span></button>
+                        <button id="triangle" class="btn btn-danger"><span title="Triangle" class="glyphicon glyphicon-triangle-top"></span></button>  
+                        <button id="text" class="btn btn-primary"><span title="Text" class="glyphicon glyphicon-text-size"></span></button>
                         <button id="eraser" class="btn btn-success"><span title="Eraser" class="glyphicon glyphicon-erase"></span></button>
                     </span>
                 </div>
@@ -57,6 +57,8 @@
                 <div class="col-md-2">
                     <label for="drawing_color"><p class="text-primary">Line color:</p></label>
                     <input id="drawing_color" type="color" value="#000000">
+                    <label for="fill_color"><p class="text-danger">Fill color:</p></label>
+                    <input id="fill_color" type="color" value="#FFFFFF">
                 </div>
                 <div class="col-md-2">
                     <label for="width_range"><p class="text-success">Brush Size</p></label>

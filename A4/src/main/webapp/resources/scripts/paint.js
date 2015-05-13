@@ -7,6 +7,26 @@ $.getScript("resources/scripts/fabric.min.js", function () {
 
     var mouse = {x: 0, y: 0};
     var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
+    var color = '#000000', fillColor = '#FFFFFF', lineWidth = 1;
+
+    // ---------------------------------- SELECTING THE CURRENT COLOR FOR DRAWING ---------------------------------
+
+    document.getElementById("drawing_color").addEventListener("change", function () {
+        canvas.freeDrawingBrush.color = document.getElementById("drawing_color").value;
+        color = document.getElementById("drawing_color").value;
+    });
+    
+    document.getElementById("fill_color").addEventListener("change", function () {
+        fillColor = document.getElementById("fill_color").value;
+    });
+    // -----------------------------------------------------------------------------------------------------------
+
+    // ---------------------------------- SELECTING THE LINE WIDTH FOR DRAWING ---------------------------------
+    document.getElementById("width_range").addEventListener("change", function () {
+        canvas.freeDrawingBrush.width = parseInt(document.getElementById("width_range").value);
+        lineWidth = parseInt(document.getElementById("width_range").value);
+    });
+    // -----------------------------------------------------------------------------------------------------------
 
     // ---------------------------------- SELECTING THE MODE FOR DRAWING ---------------------------------
     // current mode
@@ -73,19 +93,6 @@ $.getScript("resources/scripts/fabric.min.js", function () {
 
     var onPaintBrush = function () {
 
-        // ---------------------------------- SELECTING THE CURRENT COLOR FOR DRAWING ---------------------------------
-
-        document.getElementById("drawing_color").addEventListener("change", function () {
-            canvas.freeDrawingBrush.color = document.getElementById("drawing_color").value;
-        });
-        // -----------------------------------------------------------------------------------------------------------
-
-        // ---------------------------------- SELECTING THE LINE WIDTH FOR DRAWING ---------------------------------
-        document.getElementById("width_range").addEventListener("change", function () {
-            canvas.freeDrawingBrush.width = parseInt(document.getElementById("width_range").value);
-        });
-        // -----------------------------------------------------------------------------------------------------------
-
     };
 
     var onPaintRect = function () {
@@ -98,9 +105,10 @@ $.getScript("resources/scripts/fabric.min.js", function () {
         var rect = new fabric.Rect({
             left: x,
             top: y,
-            fill: 'red',
+            fill: fillColor,
             width: width,
-            height: height
+            height: height,
+            stroke: color, strokeWidth: lineWidth
         });
 
         // "add" rectangle onto canvas
@@ -120,9 +128,48 @@ $.getScript("resources/scripts/fabric.min.js", function () {
                 ) / 2;
 
         var circle = new fabric.Circle({
-            radius: radius, fill: 'green', left: x, top: y
+            radius: radius, fill: fillColor, left: x, top: y, stroke: color, strokeWidth: lineWidth
         });
         canvas.add(circle);
+    };
+
+    var onPaintLine = function () {
+        canvas.add(new fabric.Line([start_mouse.x, start_mouse.y, mouse.x, mouse.y], {
+            //left: 170,
+            //top: 150,
+            stroke: color, strokeWidth: lineWidth
+        }));
+    };
+    
+    var onPaintTriangle = function () {
+
+        var x = Math.min(mouse.x, start_mouse.x);
+        var y = Math.min(mouse.y, start_mouse.y);
+        var width = Math.abs(mouse.x - start_mouse.x);
+        var height = Math.abs(mouse.y - start_mouse.y);
+        // create a triangle object
+        var triangle = new fabric.Triangle({
+            left: x,
+            top: y,
+            fill: fillColor,
+            width: width,
+            height: height,
+            stroke: color, strokeWidth: lineWidth
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(triangle);
+    };
+
+    var onPaintText = function () {
+        canvas.add(new fabric.IText('Enter Text', {
+            fontFamily: 'arial black',
+            left: 100,
+            top: 100,
+            fill: fillColor,
+            stroke: color,
+            strokeWidth: lineWidth
+        }));
     };
 
     var onPaint = function () {
@@ -144,13 +191,13 @@ $.getScript("resources/scripts/fabric.min.js", function () {
             {
                 onPaintRect();
             }
-            else if (tool === 'ellipse')
+            else if (tool === 'triangle')
             {
-                drawEllipse(tmp_ctx);
+                onPaintTriangle();
             }
-            else if (tool === 'spray')
+            else if (tool === 'text')
             {
-                generateSprayParticles();
+                onPaintText();
             }
         }
     };
@@ -269,6 +316,5 @@ $.getScript("resources/scripts/fabric.min.js", function () {
         canvas.renderAll();
     });
     // -----------------------------------------------------------------------------------------------------------
-
 
 });
