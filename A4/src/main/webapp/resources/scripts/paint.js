@@ -188,7 +188,85 @@ $.getScript("resources/scripts/fabric.min.js", function () {
             canvas.remove(canvas.getActiveObject());
         }
 
+    });
+    // -----------------------------------------------------------------------------------------------------------
 
+    // ---------------------------------- UNDO / REDO ----------------------------------------------
+    var current;
+    var list = [];
+    var state = [];
+    var index = 0;
+    var index2 = 0;
+    var action = false;
+    var refresh = true;
+
+    canvas.on("object:added", function (e) { //canvas -object of canvas tag
+        console.log("OBJECT ADDED");
+        var object = e.target;
+        if (action === true) {
+            state = [state[index2]];
+            list = [list[index2]];
+            action = false;
+            index = 1;
+        }
+        object.saveState(); //save object
+        state[index] = JSON.stringify(object.originalState);
+        list[index] = object;
+        index++;
+        index2 = index - 1;
+        refresh = true;
+    });
+
+    canvas.on("object:modified", function (e) {
+        console.log("OBJECT MODIFIED");
+        var object = e.target;
+        if (action === true) {
+            state = [state[index2]];
+            list = [list[index2]];
+            action = false;
+            index = 1;
+        }
+        object.saveState();
+        state[index] = JSON.stringify(object.originalState);
+        list[index] = object;
+        index++;
+        index2 = index - 1;
+        refresh = true;
+    });
+
+    document.getElementById("undo").addEventListener("click", function () {
+        console.log("UNDO");
+        if (index <= 0) {
+            index = 0;
+            return;
+        }
+
+        if (refresh === true) {
+            index--;
+            refresh = false;
+        }
+
+        index2 = index - 1;
+        current = list[index2];
+        current.setOptions(JSON.parse(state[index2]));
+        index--;
+        current.setCoords();
+        canvas.renderAll();
+        action = true;
+    });
+
+    document.getElementById("redo").addEventListener("click", function () {
+        console.log("REDO");
+        action = true;
+        if (index >= state.length - 1)
+            return;
+
+        index2 = index + 1;
+        current = list[index2];
+        current.setOptions(JSON.parse(state[index2]));
+        index++;
+        current.setCoords();
+        canvas.renderAll();
     });
     // -----------------------------------------------------------------------------------------------------------
 
