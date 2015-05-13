@@ -7,7 +7,7 @@ $.getScript("resources/scripts/fabric.min.js", function () {
 
     var mouse = {x: 0, y: 0};
     var start_mouse = {x: 0, y: 0}; // used for saving the starting coordinates for drawing the line
-    
+
     // ---------------------------------- SELECTING THE MODE FOR DRAWING ---------------------------------
     // current mode
     var mode = 'draw';
@@ -17,7 +17,8 @@ $.getScript("resources/scripts/fabric.min.js", function () {
         if (mode === 'draw')
         {
             fabric.Object.prototype.selectable = false;
-            if (tool === 'brush') canvas.isDrawingMode = true;
+            if (tool === 'brush')
+                canvas.isDrawingMode = true;
         } else {
             fabric.Object.prototype.selectable = true;
             canvas.isDrawingMode = false;
@@ -29,7 +30,7 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     // current tool
     var tool = 'brush';
     canvas.isDrawingMode = true;
-    
+
     $('#tools button').on('click', function () {
         tool = $(this).attr('id');
         if (tool === 'brush' && mode === 'draw')
@@ -147,10 +148,6 @@ $.getScript("resources/scripts/fabric.min.js", function () {
             {
                 drawEllipse(tmp_ctx);
             }
-            else if (tool === 'eraser')
-            {
-                onErase();
-            }
             else if (tool === 'spray')
             {
                 generateSprayParticles();
@@ -175,6 +172,23 @@ $.getScript("resources/scripts/fabric.min.js", function () {
     // ---------------------------------- SAVE CANVAS AS PNG IMAGE --------------------------------------------------
     $("#download").click(function (event) {
         this.href = canvas.toDataURL('png');
+    });
+    // -----------------------------------------------------------------------------------------------------------
+
+    // ---------------------------------- CLEAR THE CANVAS ----------------------------------------------
+    document.getElementById("eraser").addEventListener("click", function () {
+        //canvas.remove(canvas.getActiveObject()); // used to remove a single object
+
+        if (canvas.getActiveGroup()) {
+            canvas.getActiveGroup().forEachObject(function (o) {
+                canvas.remove(o);
+            });
+            canvas.discardActiveGroup().renderAll();
+        } else {
+            canvas.remove(canvas.getActiveObject());
+        }
+
+
     });
     // -----------------------------------------------------------------------------------------------------------
 
