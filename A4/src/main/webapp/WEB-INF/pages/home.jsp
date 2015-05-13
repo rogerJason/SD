@@ -19,7 +19,7 @@
     <body>
         <div class="container"> 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <span id="tools">
                         <button id="brush" class="btn btn-primary"><span title="Brush" class="glyphicon glyphicon-pencil"></span></button>
                         <button id="circle" class="btn btn-success"><span title="Circle" class="glyphicon glyphicon-dashboard"></span></button>
@@ -29,32 +29,46 @@
                         <button id="spray" class="btn btn-primary"><span title="Spray" class="glyphicon glyphicon-certificate"></span></button>
                         <button id="eraser" class="btn btn-success"><span title="Eraser" class="glyphicon glyphicon-erase"></span></button>
                     </span>
-
-                    <label for="drawing_color">Line color:</label>
-                    <input id="drawing_color" type="color" value="#000000">
-
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary btn-block active"><span title="CB" class="glyphicon glyphicon-camera"></span> CB Paint Application</button>
+                </div>
+                <div class="col-md-3">
                     <span id="mode">
                         <button id="draw" class="btn btn-info"><span title="Draw" class="glyphicon glyphicon-edit"></span></button>
                         <button id="select" class="btn btn-warning"><span title="Select" class="glyphicon glyphicon-hand-up "></span></button>
+                        <button id="clear" class="btn btn-danger"><span title="Clear" class="glyphicon glyphicon-remove"></span></button>
+                        <a href="#" id="download" download="image.png"><button id="download" class="btn btn-primary"><span title="Download Image" class="glyphicon glyphicon-download-alt"></span></button></a>
+                        <a href="#" id="save" download="data.json"><button id="save" class="btn btn-success"><span title="Save Canvas" class="glyphicon glyphicon-picture"></span></button></a>                    
                     </span>
+                </div>
+                <div class="col-md-2">
+                <input type="file" id="load" title="Load Canvas"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <canvas id="canvas" width="1200" height="500"  style="border: 2px solid black">
+                    <canvas id="canvas" width="1200" height="520"  style="border: 2px solid black">
                         Sorry, your browser doesn't support the &lt;canvas&gt; element.
                     </canvas>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    Brush Size<input id="width_range" type="range" min="1" max="51" step="5" value="1">
-                    <button id="undo">Undo</button> 
-                    <button id="redo">Redo</button>
-                    <a href="#" id="download" download="image.png">Download Image</a> 
-                    <button id="clear">Clear</button>
-                    <a href="#" id="save" download="data.json">Save Canvas</a>
-                    Load Canvas<input type="file" id="load" />
+                <div class="col-md-2">
+                    <label for="drawing_color"><p class="text-primary">Line color:</p></label>
+                    <input id="drawing_color" type="color" value="#000000">
+                </div>
+                <div class="col-md-2">
+                    <label for="width_range"><p class="text-success">Brush Size</p></label>
+                    <input id="width_range" type="range" min="1" max="51" step="5" value="1">
+                </div>
+                <div class="col-md-6">      
+                    
+                </div>
+                <div class="col-md-2">                    
+                    <button id="undo" class="btn btn-warning"><span title="Undo" class="glyphicon glyphicon-arrow-left"></span></button> 
+                    <button id="redo" class="btn btn-info"><span title="Redo" class="glyphicon glyphicon-arrow-right"></span></button>                    
+                    
                 </div>
             </div>
         </div>
